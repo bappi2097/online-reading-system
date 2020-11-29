@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 auth()->logout();
 
 Route::get("/", function () {
-    return view("layouts.master");
+    return view("body");
+});
+
+
+Route::get("/blog", function () {
+    return view("blog");
 });
 
 // Route::get('/', function () {
