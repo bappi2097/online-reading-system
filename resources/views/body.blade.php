@@ -1,4 +1,9 @@
 @extends('components.layouts.master')
+
+@section('hero')
+<x-partials.hero />
+@endsection
+
 @section('content')
 <div class="col-md-8">
     <div class="category_section mobile">

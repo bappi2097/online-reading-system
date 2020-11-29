@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <x-layouts.meta />
+    <x-partials.meta />
 
     <!-- web-fonts -->
-    <x-layouts.style />
+    <x-partials.style />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +25,7 @@
     <!-- #main-wrapper -->
 
     <!-- jquery Core-->
-    <x-layouts.script />
+    <x-partials.script />
 </body>
 
 </html>

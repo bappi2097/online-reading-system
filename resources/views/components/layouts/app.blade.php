@@ -9,10 +9,11 @@
     <div class="content-wrapper">
 
         <!-- header_section_wrapper -->
-        <x-layouts.header />
-        @if (url()->current() == url('/'))
-        <x-layouts.hero />
-        @endif
+        <x-partials.header />
+        @yield('hero')
+        {{-- @if (url()->current() == url('/'))
+        <x-partials.hero />
+        @endif --}}
         <!-- Feature News Section -->
 
         <section id="category_section" class="category_section">
@@ -21,7 +22,7 @@
                     @yield('content')
                     <!-- Left Section -->
 
-                    <x-layouts.sidebar />
+                    <x-partials.sidebar />
                     <!-- Right Section -->
 
                 </div>
@@ -33,13 +34,13 @@
         </section>
         <!-- Category News Section -->
 
-        <x-layouts.video />
+        <x-partials.video />
         <!-- Video News Section -->
 
-        <x-layouts.subscribe />
+        <x-partials.subscribe />
         <!-- Subscriber Section -->
 
-        <x-layouts.footer />
+        <x-partials.footer />
     </div>
     <!-- #content-wrapper -->
 
@@ -48,4 +49,4 @@
 
 <a href="#" class="crunchify-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
-<x-layouts.mobile-navbar />
+<x-partials.mobile-navbar />

@@ -76,7 +76,7 @@
             </div>
         </div>
         <!-- Header Section -->
-        <x-layouts.navbar />
+        <x-partials.navbar />
 
         <!-- .navigation-section -->
     </div>
