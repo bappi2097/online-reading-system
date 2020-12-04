@@ -15,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 auth()->logout();
 
-Route::get('adminlte', function () {
-    return view('admin.dashboard');
+Route::prefix('adminlte')->name('adminlte.')->group(function () {
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('login', function () {
+        return view('admin.auth.login');
+    });
+    Route::get('register', function () {
+        return view('admin.auth.register');
+    });
 });
+
 
 Route::get("/", function () {
     return view("body");
