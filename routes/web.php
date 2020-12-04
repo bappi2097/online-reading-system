@@ -15,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 auth()->logout();
 
+Route::get('adminlte', function () {
+    return view('admin.dashboard');
+});
+
 Route::get("/", function () {
     return view("body");
 });
-
 
 Route::get("/blog", function () {
     return view("blog");
@@ -31,7 +34,6 @@ Route::get("/category", function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
