@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-auth()->logout();
-
+// auth()->logout();
 Route::prefix('adminlte')->name('adminlte.')->group(function () {
-    Route::get('login', function () {
-        return view('admin.auth.login');
-    });
-    Route::get('register', function () {
-        return view('admin.auth.register');
-    });
     Route::name('auth.')->group(function () {
-        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('login');
-        Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin'])->name('login');
+        Route::get('login', [App\Http\Controllers\Auth\AdminLoginController::class, 'showAdminLoginForm'])->name('login');
+        Route::post('login', [App\Http\Controllers\Auth\AdminLoginController::class, 'adminLogin'])->name('login');
+        Route::post('logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
         Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
         Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
     });
