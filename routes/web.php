@@ -16,14 +16,22 @@ use Illuminate\Support\Facades\Route;
 auth()->logout();
 
 Route::prefix('adminlte')->name('adminlte.')->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    });
     Route::get('login', function () {
         return view('admin.auth.login');
     });
     Route::get('register', function () {
         return view('admin.auth.register');
+    });
+    Route::name('auth.')->group(function () {
+        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('login');
+        Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin'])->name('login');
+        Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
+        Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
+    });
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
     });
 });
 

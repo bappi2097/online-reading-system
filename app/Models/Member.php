@@ -10,6 +10,8 @@ class Member extends Model
 {
     use HasFactory, Notifiable;
 
+    protected $guard = 'member';
+
     /**
      * The attributes that are mass assignable.
      *
