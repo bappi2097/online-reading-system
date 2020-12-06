@@ -65,24 +65,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('adminlte.dashboard')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <a href="{{route('adminlte.auth.logout')}}"
+                        onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Dashboard
+                            Logout
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <form action="{{route('adminlte.auth.logout')}}" method="POST">
+                    <form id="admin-logout-form" action="{{ route('adminlte.auth.logout') }}" method="POST">
                         @csrf
-                        @method('POST')
-                        <button type="submit" class="nav-link">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>
-                                Logout
-                            </p>
-                        </button>
                     </form>
                 </li>
             </ul>

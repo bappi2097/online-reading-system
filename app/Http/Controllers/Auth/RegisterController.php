@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -93,6 +94,7 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
         ]);
-        return redirect()->route('adminlte.auth.login');
+        Auth::guard('admin')->login($admin);
+        return redirect()->route('adminlte.dashboard');
     }
 }
