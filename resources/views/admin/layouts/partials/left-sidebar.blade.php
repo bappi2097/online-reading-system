@@ -14,7 +14,7 @@
                 <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{auth()->user()->first_name . " " . auth()->user()->last_name}}</a>
             </div>
         </div>
 
@@ -56,7 +56,8 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a href="{{route('adminlte.dashboard')}}" class="nav-link active">
+                    <a href="{{route('adminlte.dashboard')}}"
+                        class="nav-link @if (url()->current() == route('adminlte.dashboard')) active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -65,9 +66,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('adminlte.news-category.index')}}"
+                        class="nav-link @if (url()->current() == route('adminlte.news-category.index')) active @endif">
+                        <i class="nav-icon fas fa-align-justify"></i>
+                        <p>
+                            News Category
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('adminlte.auth.logout')}}"
                         onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();"
-                        class="nav-link">
+                        class="nav-link @if (url()->current() == route('adminlte.auth.logout')) active @endif">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout

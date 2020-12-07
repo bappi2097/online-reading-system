@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.master')
 @push('meta')
 <title>Registration | Admin</title>
 @endpush

@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -41,7 +40,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
+        // $this->middleware('guest:admin');
         // $this->middleware('guest:member');
     }
 
@@ -94,7 +93,6 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
         ]);
-        Auth::guard('admin')->login($admin);
-        return redirect()->route('adminlte.dashboard');
+        return redirect()->back();
     }
 }
