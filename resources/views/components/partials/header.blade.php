@@ -5,11 +5,11 @@
                 <div class="col-md-4">
                     <div class="left_section">
                         <span class="date">
-                            Sunday .
+                            {{date("D")}}DAY .
                         </span>
                         <!-- Date -->
                         <span class="time">
-                            09 August . 2016
+                            {{date("j F . Y")}}
                         </span>
                         <!-- Time -->
                         <div class="social">
