@@ -76,6 +76,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('adminlte.tag.index')}}"
+                        class="nav-link @if (url()->current() == route('adminlte.tag.index')) active @endif">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            Tag
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('adminlte.auth.logout')}}"
                         onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();"
                         class="nav-link @if (url()->current() == route('adminlte.auth.logout')) active @endif">
