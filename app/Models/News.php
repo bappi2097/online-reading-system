@@ -13,10 +13,10 @@ class News extends Model
     ];
     public function newsCategories()
     {
-        return $this->hasMany(NewsCategory::class);
+        return $this->belongsToMany(NewsCategory::class);
     }
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 }

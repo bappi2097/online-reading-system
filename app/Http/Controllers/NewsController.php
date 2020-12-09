@@ -65,17 +65,22 @@ class NewsController extends Controller
 
         $newsCategoriesId = NewsCategory::whereIn('slug', $request->categories)->get()->map(function ($data) {
             return $data->id;
-        });
+        }); // collect news category id from slug
 
-        $tagsID = $this->existsOrCreateTags($request->tags);
+        $tagsId = $this->existsOrCreateTags($request->tags); // tag create if doesn't exists, return tag ids
 
-        // dd($tagsID);
-
+        // image added
         $newsImage = uniqid(11) . '.' . $request->file('image')->getClientOriginalExtension();
         $request->file('image')->move(public_path('news\images'), $newsImage);
         $news["image"] = $newsImage;
 
-        dd(News::create($news));
+        $news = News::create($news);
+
+        $news->newsCategories()->attach($newsCategoriesId);
+
+        $news->tags()->attach($tagsId);
+
+        return back()->with(notification('success', 'News Added Successfully'));
     }
 
     /**
@@ -86,7 +91,8 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+
+        return view('admin.news.show', compact('news'));
     }
 
     /**

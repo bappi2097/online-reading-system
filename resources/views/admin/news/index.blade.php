@@ -6,7 +6,6 @@
             <h3 class="card-title mr-2">News</h3>
             <a href="{{route('adminlte.news.create')}}" class="btn btn-success">Add Data</a>
         </div>
-        <!-- /.card-header -->
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -16,7 +15,6 @@
                         <th>Image</th>
                         <th>Author</th>
                         <th>Short Description</th>
-                        <th>Body</th>
                         <th>Quate</th>
                         <th>Created</th>
                         <th>Action</th>
@@ -27,12 +25,13 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$news->title}}</td>
-                        <td>{{$news->image}}</td>
+                        <td>
+                            <img src="{{asset('news\\images\\' . $news->image)}}" alt="" width="60" height="50">
+                        </td>
                         <td>{{$news->author}}</td>
                         <td>{{$news->short_description}}</td>
-                        <td>{{$news->body}}</td>
-                        <td>{{$news->quate}}</td>
-                        <td>{{$news->created}}</td>
+                        <td>{{$news->quote}}</td>
+                        <td>{{$news->created_at}}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{route('adminlte.news.show', [$news])}}" class="btn btn-primary btn-xs mr-2">
@@ -58,7 +57,6 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
     </div>
 </div>
 @endsection

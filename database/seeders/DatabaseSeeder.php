@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\NewsCategory;
+use Illuminate\Cache\TagSet;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
+            NewsCategorySeeder::class,
+            TagSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }
