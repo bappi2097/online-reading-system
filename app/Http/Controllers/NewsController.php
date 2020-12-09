@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\NewsCategory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -14,7 +16,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.news.index', [
+            'newses' => News::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.news.create', [
+            'tags' => Tag::all(),
+            'categories' => NewsCategory::all()
+        ]);
     }
 
     /**
@@ -35,7 +42,40 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'string'],
+            'slug' => ['required', 'string', 'unique:news,slug'],
+            'author' => ['required', 'string'],
+            'short_description' => ['required', 'string', 'max:400'],
+            'body' => ['required'],
+            'quote' => ['nullable', 'string'],
+            'categories' => ['required'],
+            'tags' => ['required'],
+            'image' => ['required', 'file'],
+        ]);
+
+        $news = [
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'author' => $request->author,
+            'short_description' => $request->short_description,
+            'body' => $request->body,
+            'quote' => $request->quote
+        ];
+
+        $newsCategoriesId = NewsCategory::whereIn('slug', $request->categories)->get()->map(function ($data) {
+            return $data->id;
+        });
+
+        $tagsID = $this->existsOrCreateTags($request->tags);
+
+        // dd($tagsID);
+
+        $newsImage = uniqid(11) . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('news\images'), $newsImage);
+        $news["image"] = $newsImage;
+
+        dd(News::create($news));
     }
 
     /**
@@ -81,5 +121,13 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         //
+    }
+    public function existsOrCreateTags($tags)
+    {
+        $tagsId = [];
+        foreach ($tags as $tag) {
+            $tagsId[] = Tag::firstOrCreate(['name' => $tag])->id;
+        }
+        return $tagsId;
     }
 }

@@ -40,12 +40,10 @@ class TagController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'unique:tags']
         ]);
 
         $data = [
             'name' => $request->name,
-            'slug' => $request->slug,
         ];
 
         Tag::create($data);
@@ -88,12 +86,10 @@ class TagController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'unique:tags,slug,' . $tag->id]
         ]);
 
         $data = [
             'name' => $request->name,
-            'slug' => $request->slug,
         ];
 
         if ($tag->update($data)) {

@@ -66,6 +66,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('adminlte.news.index')}}"
+                        class="nav-link @if (url()->current() == route('adminlte.news.index')) active @endif">
+                        <i class="nav-icon far fa-newspaper"></i>
+                        <p>
+                            News
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('adminlte.news-category.index')}}"
                         class="nav-link @if (url()->current() == route('adminlte.news-category.index')) active @endif">
                         <i class="nav-icon fas fa-align-justify"></i>

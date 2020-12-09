@@ -13,7 +13,6 @@
                     <tr>
                         <th>SL.</th>
                         <th>Name</th>
-                        <th>Slug</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -22,7 +21,6 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$tag->name}}</td>
-                        <td>{{$tag->slug}}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{route('adminlte.tag.show', [$tag])}}" class="btn btn-primary btn-xs mr-2">

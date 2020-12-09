@@ -24,15 +24,6 @@
                     </span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="tag-slug">Tag Slug</label>
-                    <input type="text" class="form-control" id="tag-slug" placeholder="ex: hot-news" name="slug">
-                    @error('slug')
-                    <span class="text-red text-xs" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
 
             </div>
             <!-- /.card-body -->
@@ -44,18 +35,3 @@
     </div>
 </div>
 @endsection
-
-@push('script')
-<script>
-    function tagSlug()
-    {
-        let tag_name = document.querySelector('#tag-name').value;
-        if(tag_name)
-        {
-            document.querySelector('#tag-slug').value = tag_name.replace(/[^a-zA-Z0-9 -]/g, "").toLowerCase().split(" ").join('-');
-        }else{
-            document.querySelector('#tag-slug').value = "";
-        }
-    }
-</script>
-@endpush

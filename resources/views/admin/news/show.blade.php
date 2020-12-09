@@ -15,6 +15,11 @@
                 <label for="tag-name">Tag Name</label>
                 <input type="text" class="form-control" id="tag-name" value="{{$tag->name}}" readonly>
             </div>
+            <div class="form-group">
+                <label for="tag-slug">Tag Slug</label>
+                <input type="text" class="form-control" id="tag-slug" value="{{$tag->slug}}" readonly>
+            </div>
+
         </div>
         <!-- /.card-body -->
     </div>

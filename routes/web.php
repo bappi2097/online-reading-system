@@ -49,6 +49,15 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
             Route::get('/{tag}', [App\Http\Controllers\TagController::class, 'show'])->name('show');
             Route::delete('/{tag}', [App\Http\Controllers\TagController::class, 'destroy'])->name('destroy');
         });
+        Route::prefix('news')->name('news.')->group(function () {
+            Route::get('/', [App\Http\Controllers\NewsController::class, 'index'])->name('index');
+            Route::get('create', [App\Http\Controllers\NewsController::class, 'create'])->name('create');
+            Route::post('/', [App\Http\Controllers\NewsController::class, 'store'])->name('store');
+            Route::get('edit/{news}', [App\Http\Controllers\NewsController::class, 'edit'])->name('edit');
+            Route::put('/{news}', [App\Http\Controllers\NewsController::class, 'update'])->name('update');
+            Route::get('/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('show');
+            Route::delete('/{news}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
