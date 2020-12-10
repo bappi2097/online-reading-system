@@ -72,7 +72,7 @@ class NewsController extends Controller
         // image added
         $newsImage = uniqid(11) . '.' . $request->file('image')->getClientOriginalExtension();
         $request->file('image')->move(public_path('news\images'), $newsImage);
-        $news["image"] = $newsImage;
+        $news["image"] = '\\news\\images\\' . $newsImage;
 
         $news = News::create($news);
 
@@ -103,7 +103,11 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('admin.news.edit', [
+            'news' => $news,
+            'tags' => Tag::all(),
+            'categories' => NewsCategory::all()
+        ]);
     }
 
     /**
@@ -115,7 +119,50 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'string'],
+            'slug' => ['required', 'string', 'unique:news,slug,' . $news->id],
+            'author' => ['required', 'string'],
+            'short_description' => ['required', 'string', 'max:400'],
+            'body' => ['required'],
+            'quote' => ['nullable', 'string'],
+            'categories' => ['required'],
+            'tags' => ['required'],
+            'image' => ['nullable', 'file'],
+        ]);
+
+        $data = [
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'author' => $request->author,
+            'short_description' => $request->short_description,
+            'body' => $request->body,
+            'quote' => $request->quote
+        ];
+
+        $newsCategoriesId = NewsCategory::whereIn('slug', $request->categories)->get()->map(function ($data) {
+            return $data->id;
+        }); // collect news category id from slug
+
+
+
+        $tagsId = $this->existsOrCreateTags($request->tags); // tag create if doesn't exists, return tag ids
+
+        // image added
+        if ($request->hasFile('image')) {
+            // unlink(public_path("news\\images\\" . $news->image));
+            $newsImage = uniqid(11) . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('news\images'), $newsImage);
+            $data["image"] = '\\news\\images\\' . $newsImage;
+        }
+
+        $news->update($data);
+
+        $news->newsCategories()->sync($newsCategoriesId);
+
+        $news->tags()->sync($tagsId);
+
+        return back()->with(notification('success', 'News Updated Successfully'));
     }
 
     /**
@@ -126,7 +173,16 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->newsCategories()->detach();
+
+        $news->tags()->detach();
+
+        unlink(public_path($news->image));
+        if ($news->delete()) {
+            return back()->with(notification('success', 'News Successfully Deleted.'));
+        } else {
+            return back()->with(notification('danger', 'Something Went Wrong!'));
+        }
     }
     public function existsOrCreateTags($tags)
     {

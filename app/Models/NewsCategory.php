@@ -16,4 +16,8 @@ class NewsCategory extends Model
     {
         return $this->belongsToMany(News::class);
     }
+    public function contentLayout()
+    {
+        return $this->hasOne(ContentLayout::class);
+    }
 }

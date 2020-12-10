@@ -26,12 +26,13 @@
                         <td>{{$index+1}}</td>
                         <td>{{$news->title}}</td>
                         <td>
-                            <img src="{{asset('news\\images\\' . $news->image)}}" alt="" width="60" height="50">
+                            <img src="{{ $news->image}}" alt="" width="60" height="50">
                         </td>
                         <td>{{$news->author}}</td>
                         <td>{{$news->short_description}}</td>
                         <td>{{$news->quote}}</td>
-                        <td>{{$news->created_at}}</td>
+                        <td>{{date("l", strtotime($news->created_at))}} .
+                            {{date("j F . Y", strtotime($news->created_at))}}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{route('adminlte.news.show', [$news])}}" class="btn btn-primary btn-xs mr-2">

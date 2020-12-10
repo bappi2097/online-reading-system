@@ -5,7 +5,7 @@
                 <div class="col-md-4">
                     <div class="left_section">
                         <span class="date">
-                            {{date("D")}}DAY .
+                            {{date("l")}} .
                         </span>
                         <!-- Date -->
                         <span class="time">

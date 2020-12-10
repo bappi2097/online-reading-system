@@ -14,15 +14,19 @@ class NewsCategorySeeder extends Seeder
      */
     public function run()
     {
-        NewsCategory::insert(
+        NewsCategory::create(
             [
                 'name' => 'Mobile',
                 'slug' => 'mobile',
-            ],
+            ]
+        );
+        NewsCategory::create(
             [
                 'name' => 'Tablet',
-                'slug' => 'tablet',
-            ],
+                'slug' => 'tablet'
+            ]
+        );
+        NewsCategory::create(
             [
                 'name' => 'Hot News',
                 'slug' => 'hot-news',

@@ -17,18 +17,19 @@
     </a>
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Add News</h3>
+            <h3 class="card-title">Edit News</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" action="{{route('adminlte.news.store')}}" method="POST" enctype="multipart/form-data"
-            autocomplete="off">
+        <form role="form" action="{{route('adminlte.news.update', [$news->id])}}" method="POST"
+            enctype="multipart/form-data" autocomplete="off">
             @csrf
+            @method('PUT')
             <div class="card-body">
                 <div class="form-group">
                     <label for="news-title">News Title</label>
-                    <input type="text" class="form-control" id="news-title" placeholder="John Doe is Dead" name="title"
-                        required oninput="newsSlug()">
+                    <input type="text" class="form-control" id="news-title" placeholder="John Doe is Dead"
+                        value="{{$news->title}}" name="title" required oninput="newsSlug()">
                     @error('title')
                     <span class="text-red text-xs" role="alert">
                         <strong>{{ $message }}</strong>
@@ -38,7 +39,7 @@
                 <div class="form-group">
                     <label for="news-slug">News Slug</label>
                     <input type="text" class="form-control" id="news-slug" placeholder="john-doe-is-dead" name="slug"
-                        required>
+                        value="{{$news->slug}}" required>
                     @error('slug')
                     <span class="text-red text-xs" role="alert">
                         <strong>{{ $message }}</strong>
@@ -49,7 +50,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="news-image">News Image</label>
-                            <input type="file" class="form-control" id="news-image" name="image" required
+                            <input type="file" class="form-control" id="news-image" name="image"
                                 accept=".jpeg, .jpg, .png">
                             @error('image')
                             <span class="text-red text-xs" role="alert">
@@ -61,8 +62,8 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="news-author">News Author</label>
-                            <input type="text" class="form-control" id="news-author" name="author" required
-                                placeholder="Joh Doe">
+                            <input type="text" class="form-control" id="news-author" name="author"
+                                value="{{$news->author}}" required placeholder="Joh Doe">
                             @error('author')
                             <span class="text-red text-xs" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -74,7 +75,7 @@
                 <div class="form-group">
                     <label for="short-description">Short Description</label>
                     <textarea name="short_description" class="form-control" id="short-description" required
-                        placeholder="Max: 300 Charecter" cols="30" rows="3"></textarea>
+                        placeholder="Max: 300 Charecter" cols="30" rows="3">{{$news->short_description}}</textarea>
                     @error('short_description')
                     <span class="text-red text-xs" role="alert">
                         <strong>{{ $message }}</strong>
@@ -84,7 +85,8 @@
                 <div class="form-group">
                     <label for="wysi-body">Body</label>
                     <div class="mb-3">
-                        <textarea class="form-control" name="body" id="wysi-body" placeholder="" required></textarea>
+                        <textarea class="form-control" name="body" id="wysi-body" placeholder=""
+                            required>{!!$news->body!!}</textarea>
                     </div>
                     @error('body')
                     <span class="text-red text-xs" role="alert">
@@ -96,7 +98,7 @@
                     <label for="news-quote">Quote</label>
                     <input type="text" class="form-control" id="news-quote"
                         placeholder="People say nothing is impossible, but I do nothing every day." name="quote"
-                        required>
+                        value="{{$news->quote}}" required>
                     @error('quote')
                     <span class="text-red text-xs" role="alert">
                         <strong>{{ $message }}</strong>
@@ -109,7 +111,10 @@
                             <label>Select Categories</label>
                             <select multiple class="form-control" name="categories[]" required>
                                 @foreach ($categories as $category)
-                                <option value="{{$category->slug}}">{{$category->name}}</option>
+                                <option value="{{$category->slug}}" @if ($news->newsCategories()->exists($category))
+                                    selected
+                                    @endif>
+                                    {{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -121,7 +126,7 @@
                                 <input class="form-control" list="tags" id="tag" autocomplete="false">
                                 <datalist id="tags" autocomplete="false">
                                     @foreach ($tags as $tag)
-                                    <option value="{{$tag->name}}"></option>
+                                    <option value="{{$tag->name}}"> </option>
                                     @endforeach
                                 </datalist>
                                 <div class="input-group-append">
@@ -131,6 +136,16 @@
                             </div>
                         </div>
                         <div class="form-group row my-3" id="show-tag">
+                            @foreach ($news->tags as $tag)
+                            <div class="mr-2">
+                                <span class="badge badge-pill badge-secondary">
+                                    {{$tag->name}}
+                                    <i class="fas fa-times-circle" style="cursor: pointer;"
+                                        onclick="this.parentNode.parentNode.remove()"></i>
+                                </span>
+                                <input type="hidden" name="tags[]" value="{{$tag->name}}">
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

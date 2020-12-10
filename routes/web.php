@@ -58,13 +58,20 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
             Route::get('/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('show');
             Route::delete('/{news}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('destroy');
         });
+        Route::prefix('content-layouts')->name('content-layouts.')->group(function () {
+            Route::get('/', [App\Http\Controllers\ContentLayoutController::class, 'index'])->name('index');
+            Route::get('create', [App\Http\Controllers\ContentLayoutController::class, 'create'])->name('create');
+            Route::post('/', [App\Http\Controllers\ContentLayoutController::class, 'store'])->name('store');
+            Route::get('edit/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'edit'])->name('edit');
+            Route::put('/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'update'])->name('update');
+            Route::get('/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'show'])->name('show');
+            Route::delete('/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
 
-Route::get("/", function () {
-    return view("body");
-});
+Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name('home');
 
 Route::get("/blog", function () {
     return view("blog");
@@ -84,4 +91,4 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
