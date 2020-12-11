@@ -77,9 +77,7 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
             Route::delete('/{social_media}', [App\Http\Controllers\SocialMediaController::class, 'destroy'])->name('destroy');
         });
         Route::prefix('meta')->name('meta.')->group(function () {
-            Route::post('/', [App\Http\Controllers\MetaController::class, 'store'])->name('store');
             Route::put('/{meta}', [App\Http\Controllers\MetaController::class, 'update'])->name('update');
-            Route::delete('/{meta}', [App\Http\Controllers\MetaController::class, 'destroy'])->name('destroy');
         });
     });
 });

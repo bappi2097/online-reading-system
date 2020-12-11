@@ -109,7 +109,7 @@
                         <li class="nav-item">
                             <a href="{{route('adminlte.content-layouts.index')}}"
                                 class="nav-link @if (url()->current() == route('adminlte.content-layouts.index')) active @endif">
-                                <i class=" far fa-circle nav-icon"></i>
+                                <i class="fas fa-border-all nav-icon"></i>
                                 <p>Content Layout</p>
                             </a>
                         </li>

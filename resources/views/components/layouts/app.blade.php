@@ -41,7 +41,7 @@
         <x-partials.subscribe />
         <!-- Subscriber Section -->
 
-        <x-partials.footer />
+        <x-partials.footer></x-partials.footer>
     </div>
     <!-- #content-wrapper -->
 

@@ -15,6 +15,13 @@ class CreateMetasTable extends Migration
     {
         Schema::create('metas', function (Blueprint $table) {
             $table->id();
+            $table->text('title');
+            $table->string('author');
+            $table->text('logo');
+            $table->text('favicon');
+            $table->text('description');
+            $table->text('keyword');
+            $table->text('copyright');
             $table->timestamps();
         });
     }

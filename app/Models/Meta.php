@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Meta extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title', 'logo', 'favicon', 'description', 'keyword', 'copyright', 'author'
+    ];
 }

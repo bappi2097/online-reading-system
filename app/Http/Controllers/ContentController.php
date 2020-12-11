@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meta;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class ContentController extends Controller
     {
         return view('admin.content.edit', [
             "socialMedias" => SocialMedia::all(),
+            "meta" => Meta::first(),
         ]);
     }
 

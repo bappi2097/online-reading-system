@@ -150,7 +150,7 @@ class NewsController extends Controller
 
         // image added
         if ($request->hasFile('image')) {
-            // unlink(public_path("news\\images\\" . $news->image));
+            unlink(public_path($news->image));
             $newsImage = uniqid(11) . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('news\images'), $newsImage);
             $data["image"] = '\\news\\images\\' . $newsImage;
