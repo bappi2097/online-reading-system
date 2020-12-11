@@ -114,9 +114,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('adminlte.content.index')}}"
+                                class="nav-link @if (url()->current() == route('adminlte.content.index')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Content</p>
                             </a>
                         </li>
                     </ul>

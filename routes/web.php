@@ -67,6 +67,20 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
             Route::get('/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'show'])->name('show');
             Route::delete('/{content_layout}', [App\Http\Controllers\ContentLayoutController::class, 'destroy'])->name('destroy');
         });
+        Route::prefix('content')->name('content.')->group(function () {
+            Route::get('/', [App\Http\Controllers\ContentController::class, 'index'])->name('index');
+            Route::put('/', [App\Http\Controllers\ContentController::class, 'update'])->name('update');
+        });
+        Route::prefix('social-media')->name('social-media.')->group(function () {
+            Route::post('/', [App\Http\Controllers\SocialMediaController::class, 'store'])->name('store');
+            Route::put('/{social_media}', [App\Http\Controllers\SocialMediaController::class, 'update'])->name('update');
+            Route::delete('/{social_media}', [App\Http\Controllers\SocialMediaController::class, 'destroy'])->name('destroy');
+        });
+        Route::prefix('meta')->name('meta.')->group(function () {
+            Route::post('/', [App\Http\Controllers\MetaController::class, 'store'])->name('store');
+            Route::put('/{meta}', [App\Http\Controllers\MetaController::class, 'update'])->name('update');
+            Route::delete('/{meta}', [App\Http\Controllers\MetaController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 

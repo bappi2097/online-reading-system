@@ -20,16 +20,25 @@ class NewsCategorySeeder extends Seeder
                 'slug' => 'mobile',
             ]
         );
+
         NewsCategory::create(
             [
                 'name' => 'Tablet',
                 'slug' => 'tablet'
             ]
         );
+
         NewsCategory::create(
             [
                 'name' => 'Hot News',
                 'slug' => 'hot-news',
+            ],
+        );
+
+        NewsCategory::create(
+            [
+                'name' => 'Top Viewd',
+                'slug' => 'Top Viwed',
             ],
         );
     }

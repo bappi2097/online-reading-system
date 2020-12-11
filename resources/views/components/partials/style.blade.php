@@ -13,6 +13,7 @@
 <link href="assets/css/owl.theme.default.min.css" rel="stylesheet">
 <!-- Theme Style -->
 <link href="assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
 
 @stack('link-style')
 
