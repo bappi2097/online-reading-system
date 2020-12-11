@@ -1,22 +1,21 @@
 @extends('components.layouts.master')
 
 @section('hero')
-<x-partials.hero />
+<x-partials.hero></x-partials.hero>
 @endsection
 
 @push('meta')
+<title>{{$meta->title}}</title>
+<link href="{{$meta->favicon}}" rel=icon>
 <meta name="author" content="coronabd-2020">
-<link rel="icon" type="image/png" href="https://coronabd.xyz/image/logoTabbar.png">
-<meta property="og:image" content="https://coronabd.xyz/image/logo.png">
+<link rel="icon" type="image/png" href="{{$meta->logo}}">
+<meta property="og:image" content="{{asset($meta->logo)}}">
 <meta property="og:image:type" content="image/png/jpg">
-<meta property="og:description" content="করোনাতে ভয় নয় সচেতনতা বাড়াও, সঠিক তথ্য পৌছে দিয়ে এক হয়ে দাড়াও">
-<meta name="keywords"
-    content="করোনাভাইরাস, বাংলায় করোনা, করোনাভাইরাস সম্পর্কে, কোভিড-১৯, করোনাভাইরাস ব্লগ, coronavirus info, covid-19,coronavirus bangladesh, coronabd, করোনাবিডি, coronabd com, coronabd xyz">
-
-<meta property="og:image" content="https://coronabd.xyz">
-<meta property="og:url" content="https://coronabd.xyz">
-<meta property="og:title" content="করোনাভাইরাস ২০১৯ ॥ সকল তথ্য ॥ করোনা বট">
-<title>করোনাভাইরাস ২০১৯</title>
+<meta property="og:description" content="{{$meta->description}}">
+<meta name="keywords" content="{{$meta->keyword}}">
+<meta property="og:image" content="{{asset($meta->logo)}}">
+<meta property="og:url" content="{{url('/')}}">
+<meta property="og:title" content="{{$meta->title}}">
 @endpush
 
 @section('content')

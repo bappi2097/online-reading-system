@@ -2,23 +2,18 @@
 
 namespace App\View\Components\partials;
 
-use App\Models\Meta;
-use App\Models\SocialMedia;
 use Illuminate\View\Component;
 
-class Footer extends Component
+class Hero extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $socialMedias;
-    public $meta;
     public function __construct()
     {
-        $this->socialMedias = SocialMedia::all();
-        $this->meta = Meta::first();
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class Footer extends Component
      */
     public function render()
     {
-        return view('components.partials.footer');
+        return view('components.partials.hero');
     }
 }

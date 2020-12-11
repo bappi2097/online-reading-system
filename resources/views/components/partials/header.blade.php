@@ -14,7 +14,7 @@
                         <!-- Time -->
                         <div class="social">
                             @foreach ($socialMedias as $socialMedia)
-                            <a href="{{$socialMedia->link}}" class="icons-sm fb-ic">{!!$socialMedia->icon!!}</a>
+                            <a href="//{{$socialMedia->link}}" class="icons-sm fb-ic">{!!$socialMedia->icon!!}</a>
                             @endforeach
                         </div>
                         <!-- Top Social Section -->
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="/"><img src="assets/img/logo.png" alt="Tech NewsLogo"></a>
+                        <a href="/"><img src="{{$meta->logo}}" alt="Tech NewsLogo"></a>
                     </div>
                     <!-- Logo Section -->
                 </div>

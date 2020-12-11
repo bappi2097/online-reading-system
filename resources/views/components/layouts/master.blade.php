@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <x-partials.meta />
+    <x-partials.meta></x-partials.meta>
 
     <!-- web-fonts -->
     <x-partials.style />

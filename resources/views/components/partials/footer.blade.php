@@ -8,12 +8,11 @@
                 </div>
                 <div class="logo footer-logo">
                     <a title="fontanero" href="index.html">
-                        <img src="assets/img/tech_about.jpg" alt="technews">
+                        <img src="{{$meta->logo}}" alt="technews">
                     </a>
 
-                    <p>Competently conceptualize go forward testing procedures and B2B expertise.
-                        Phosfluorescently
-                        cultivate principle-centered methods.of empowerment through fully researched.
+                    <p>
+                        {{$meta->description}}
                     </p>
                 </div>
             </div>
@@ -148,16 +147,17 @@
                     <div class="col-sm-3">
                         <div class="social">
                             @foreach ($socialMedias as $socialMedia)
-                            <a href="{{$socialMedia->link}}" class="icons-sm fb-ic">{!!$socialMedia->icon!!}</a>
+                            <a href="//{{$socialMedia->link}}" class="icons-sm fb-ic">{!!$socialMedia->icon!!}</a>
                             @endforeach
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <p>&copy; Copyright 2016-Tech News . Design by: <a href="https://uicookies.com">uiCookies</a>
+                        <p>
+                            {!!$meta->copyright!!}
                         </p>
                     </div>
                     <div class="col-sm-3">
-                        <p>Technology News Magazine</p>
+                        <p>{{$meta->title}}</p>
                     </div>
                 </div>
             </div>

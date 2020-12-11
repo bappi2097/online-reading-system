@@ -2,6 +2,7 @@
 
 namespace App\View\Components\partials;
 
+use App\Models\Meta;
 use App\Models\SocialMedia;
 use Illuminate\View\Component;
 
@@ -13,9 +14,11 @@ class Header extends Component
      * @return void
      */
     public $socialMedias;
+    public $meta;
     public function __construct()
     {
         $this->socialMedias = SocialMedia::all();
+        $this->meta = Meta::first();
     }
 
     /**
