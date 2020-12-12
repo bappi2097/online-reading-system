@@ -2,6 +2,8 @@
 
 namespace App\View\Components\partials;
 
+use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\View\Component;
 
 class Hero extends Component
@@ -11,9 +13,13 @@ class Hero extends Component
      *
      * @return void
      */
+    public $hotNews;
+    public $topViews;
     public function __construct()
     {
-        //
+        $this->hotNews = NewsCategory::where(['slug' => 'hot-news'])->first()->news()->latest()->first();
+        $this->topViews = NewsCategory::where(['slug' => 'top-viewed'])->first()->news()->latest()->take(2)->get();
+        dd($this->topViews);
     }
 
     /**

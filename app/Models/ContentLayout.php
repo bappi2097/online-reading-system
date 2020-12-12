@@ -13,6 +13,6 @@ class ContentLayout extends Model
     ];
     public function newsCategory()
     {
-        return $this->belongsTo(NewsCategory::class);
+        return $this->belongsTo(NewsCategory::class)->withTimestamps();;
     }
 }

@@ -88,6 +88,7 @@ Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name('ho
 Route::get("/blog", function () {
     return view("blog");
 });
+Route::get('news/{slug}', [App\Http\Controllers\HomeController::class, "news"])->name('news');
 
 Route::get("/category", function () {
     return view("category");

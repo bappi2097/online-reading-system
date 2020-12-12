@@ -12,9 +12,6 @@
         <x-partials.header />
         {{-- @include('components.partials.header') --}}
         @yield('hero')
-        @if (url()->current() == url('/'))
-        <x-partials.hero />
-        @endif
         <!-- Feature News Section -->
 
         <section id="category_section" class="category_section">

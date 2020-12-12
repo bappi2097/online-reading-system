@@ -111,7 +111,7 @@
                             <label>Select Categories</label>
                             <select multiple class="form-control" name="categories[]" required>
                                 @foreach ($categories as $category)
-                                <option value="{{$category->slug}}" @if ($news->newsCategories()->exists($category))
+                                <option value="{{$category->slug}}" @if ($news->newsCategories()->find($category->id))
                                     selected
                                     @endif>
                                     {{$category->name}}</option>
