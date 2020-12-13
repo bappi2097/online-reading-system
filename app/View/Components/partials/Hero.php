@@ -19,7 +19,6 @@ class Hero extends Component
     {
         $this->hotNews = NewsCategory::where(['slug' => 'hot-news'])->first()->news()->latest()->first();
         $this->topViews = NewsCategory::where(['slug' => 'top-viewed'])->first()->news()->latest()->take(2)->get();
-        dd($this->topViews);
     }
 
     /**

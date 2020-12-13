@@ -20,36 +20,37 @@
 
 @section('content')
 <div class="col-md-8">
+    @foreach ($contentLayouts as $contentLayout)
+    @if ($contentLayout->layout_no == 1)
     <div class="category_section mobile">
         <div class="article_title header_purple">
-            <h2><a href="category.html" target="_self">Mobile</a></h2>
+            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
         </div>
         <!----article_title------>
+        @foreach ($contentLayout->newsCategory->news as $index => $news)
+        @if ($loop->first)
         <div class="category_article_wrapper">
             <div class="row">
                 <div class="col-md-6">
                     <div class="top_article_img">
-                        <a href="single.html" target="_self"><img class="img-responsive"
-                                src="assets/img/cat-mobi-left-1.jpg" alt="feature-top">
+                        <a href="{{route('news',$news->slug)}}" target="_self"><img class="img-responsive"
+                                src="{{$news->image}}" alt="feature-top">
                         </a>
                     </div>
                     <!----top_article_img------>
                 </div>
                 <div class="col-md-6">
-                    <span class="tag purple">Mobile</span>
+                    <span class="tag purple">{{$contentLayout->newsCategory->name}}</span>
 
                     <div class="category_article_title">
-                        <h2><a href="single.html" target="_self">Airbnb launches photo-centric app for iPads and Android
-                                tablets. </a></h2>
+                        <h2><a href="single.html" target="_self">{{$news->title}}</a></h2>
                     </div>
                     <!----category_article_title------>
-                    <div class="category_article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
+                    <div class="category_article_date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>,
+                        by: <a href="#">{{$news->author}}</a></div>
                     <!----category_article_date------>
                     <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate
-                        B2C users after installed base benefits. Dramatically visualize customer directed convergence
-                        without revolutionary ROI.
+                        {{$news->short_description}}
                     </div>
                     <!----category_article_content------>
                     <div class="media_social">
@@ -60,20 +61,26 @@
                 </div>
             </div>
         </div>
+        @else
+        @if($index == 1)
         <div class="category_article_wrapper">
             <div class="row">
+                @endif
+                @if ($loop->even)
                 <div class="col-md-6">
+                    @endif
                     <div class="media">
                         <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
+                            <a href="#"><img class="media-object -layout-1-sub-image" src="{{$news->image}}"
                                     alt="Generic placeholder image"></a>
                         </div>
                         <div class="media-body">
-                            <span class="tag purple">Mobile</span>
+                            <span class="tag purple">{{$contentLayout->newsCategory->name}}</span>
 
-                            <h3 class="media-heading"><a href="single.html" target="_self">Apple launches photo-centric
-                                    wrist watch for Android</a></h3>
-                            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
+                            <h3 class="media-heading"><a href="{{route('news',$news->slug)}}"
+                                    target="_self">{{$news->title}}</a></h3>
+                            <span class="media-date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>,
+                                by: <a href="#">{{$news->author}}</a></span>
 
                             <div class="media_social">
                                 <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
@@ -81,102 +88,53 @@
                             </div>
                         </div>
                     </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg"
-                                    alt="Generic placeholder image"></a>
-                        </div>
-                        <div class="media-body">
-                            <span class="tag purple">Mobile</span>
-
-                            <h3 class="media-heading"><a href="single.html" target="_self">The Portable Charger or data
-                                    cable</a></h3>
-                            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                            <div class="media_social">
-                                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                            </div>
-                        </div>
-                    </div>
+                    @if ($loop->odd || $loop->last)
                 </div>
-                <div class="col-md-6">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm2.jpg"
-                                    alt="Generic placeholder image"></a>
-                        </div>
-                        <div class="media-body">
-                            <span class="tag purple">Mobile</span>
-
-                            <h3 class="media-heading"><a href="single.html" target="_self">Iphone 6 launches white &
-                                    Grey
-                                    colors handset</a></h3>
-                            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                            <div class="media_social">
-                                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm4.jpg"
-                                    alt="Generic placeholder image"></a>
-                        </div>
-                        <div class="media-body">
-                            <span class="tag purple">Mobile</span>
-
-                            <h3 class="media-heading"><a href="single.html" target="_self">Fully new look slim handset
-                                    like</a></h3>
-                            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                            <div class="media_social">
-                                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
+                @if($loop->last)
             </div>
         </div>
+        @endif
+        @endif
+        @endforeach
         <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Mobile News Section -->
+    @elseif($contentLayout->layout_no == 2)
 
     <div class="category_section tablet">
         <div class="article_title header_pink">
-            <h2><a href="category.html" target="_self">Tablet Pc</a></h2>
+            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
         </div>
         <!-- Mobile News Section -->
 
         <div class="category_article_wrapper">
             <div class="row">
+                @foreach ($contentLayout->newsCategory->news as $index => $news)
                 <div class="col-md-6">
                     <div class="category_article_body">
                         <div class="top_article_img">
-                            <a href="single.html" target="_self"><img class="img-responsive"
-                                    src="assets/img/tab_top1.jpg" alt="feature-top">
+                            <a href="{{route('news',$news->slug)}}" target="_self"><img class="img-responsive"
+                                    src="{{$news->image}}" alt="feature-top">
                             </a>
                         </div>
                         <!-- top_article_img -->
 
-                        <span class="tag pink"><a href="category.html" target="_self">Tablet</a></span>
+                        <span class="tag pink"><a href="category.html"
+                                target="_self">{{$contentLayout->newsCategory->name}}</a></span>
 
                         <div class="category_article_title">
-                            <h2><a href="single.html" target="_self">Sony launce a new Android tablets for new
-                                    generation </a></h2>
+                            <h2><a href="{{route('news',$news->slug)}}" target="_self">{{$news->title}}</a></h2>
                         </div>
                         <!-- category_article_title -->
 
-                        <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
+                        <div class="article_date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>, by:
+                            <a href="#">{{$news->author}}</a></div>
                         <!----article_date------>
                         <!-- article_date -->
 
                         <div class="category_article_content">
-                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                            procrastinate B2C users after.
+                            {{$news->short_description}}
                         </div>
                         <!-- category_article_content -->
 
@@ -191,45 +149,7 @@
 
                 </div>
                 <!-- col-md-6 -->
-
-                <div class="col-md-6">
-                    <div class="category_article_body">
-                        <div class="top_article_img">
-                            <a href="single.html" target="_self">
-                                <img class="img-responsive" src="assets/img/tab_top2.jpg" alt="feature-top">
-                            </a>
-                        </div>
-                        <!-- top_article_img -->
-
-                        <span class="tag pink"><a href="category.html" target="_self">Tablet</a></span>
-
-                        <div class="category_article_title">
-                            <h2><a href="single.html" target="_self">Technology market see the new Android tablets </a>
-                            </h2>
-                        </div>
-                        <!-- category_article_title -->
-
-                        <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-                        <!----article_date------>
-                        <!-- article_date -->
-
-                        <div class="category_article_content">
-                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                            procrastinate B2C users after.
-                        </div>
-                        <!-- category_article_content -->
-
-                        <div class="media_social">
-                            <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
-                            <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                        </div>
-                        <!-- media_social -->
-
-                    </div>
-                    <!-- category_article_body -->
-
-                </div>
-                <!-- col-md-6 -->
+                @endforeach
 
             </div>
             <!-- row -->
@@ -240,8 +160,68 @@
         <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Tablet News Section -->
+    @elseif($contentLayout->layout_no == 3)
 
-    <div class="category_section gadget">
+    <div class="category_section camera">
+        <div class="article_title header_orange">
+            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
+        </div>
+        <!-- article_title -->
+        @foreach ($contentLayout->newsCategory->news as $index => $news)
+        <div class="category_article_wrapper">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="top_article_img">
+                        <a href="single.html" target="_self">
+                            <img class="img-responsive" src="{{$news->image}}" alt="{{$news->title}}">
+                        </a>
+                    </div>
+                    <!-- top_article_img -->
+
+                </div>
+                <div class="col-md-7">
+                    <span class="tag orange">{{$contentLayout->newsCategory->name}}</span>
+
+                    <div class="category_article_title">
+                        <h2><a href="{{route('news',$news->slug)}}" target="_self">{{$news->title}}</a></h2>
+                    </div>
+                    <!-- category_article_title -->
+
+                    <div class="article_date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>, by: <a
+                            href="#">{{$news->author}}</a></div>
+                    <!----article_date------>
+                    <!-- category_article_wrapper -->
+
+                    <div class="category_article_content">
+                        {{$news->short_description}}
+                    </div>
+                    <!-- category_article_content -->
+
+                    <div class="media_social">
+                        <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
+                        <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
+                    </div>
+                    <!-- media_social -->
+
+                </div>
+                <!-- col-md-7 -->
+
+            </div>
+            <!-- row -->
+
+        </div>
+        <!-- category_article_wrapper -->
+        @endforeach
+        <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
+    </div>
+    <!-- Camera News Section -->
+
+    @endif
+
+
+    @endforeach
+
+    {{-- <div class="category_section gadget">
         <div class="article_title header_black">
             <h2><a href="category.html" target="_self">Gadgets</a></h2>
         </div>
@@ -370,152 +350,6 @@
         <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Gadget News Section -->
-
-    <div class="category_section camera">
-        <div class="article_title header_orange">
-            <h2><a href="category.html" target="_self">Camera</a></h2>
-        </div>
-        <!-- article_title -->
-
-        <div class="category_article_wrapper">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="top_article_img">
-                        <a href="single.html" target="_self">
-                            <img class="img-responsive" src="assets/img/cam_left1.jpg" alt="feature-top">
-                        </a>
-                    </div>
-                    <!-- top_article_img -->
-
-                </div>
-                <div class="col-md-7">
-                    <span class="tag orange">Camera</span>
-
-                    <div class="category_article_title">
-                        <h2><a href="single.html" target="_self">Yasaki camera launches new generic hi-speed </a></h2>
-                    </div>
-                    <!-- category_article_title -->
-
-                    <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-                    <!----article_date------>
-                    <!-- category_article_wrapper -->
-
-                    <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate.
-                    </div>
-                    <!-- category_article_content -->
-
-                    <div class="media_social">
-                        <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
-                        <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                    </div>
-                    <!-- media_social -->
-
-                </div>
-                <!-- col-md-7 -->
-
-            </div>
-            <!-- row -->
-
-        </div>
-        <!-- category_article_wrapper -->
-
-        <div class="category_article_wrapper">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="top_article_img">
-                        <a href="single.html" target="_self">
-                            <img class="img-responsive" src="assets/img/cam_left2.jpg" alt="feature-top">
-                        </a>
-                    </div>
-                    <!-- top_article_img -->
-
-                </div>
-                <div class="col-md-7">
-                    <span class="tag orange">Camera</span>
-
-                    <div class="category_article_title">
-                        <h2><a href="single.html" target="_self">DSLR is the most old camera at this time </a></h2>
-                    </div>
-                    <!-- category_article_title -->
-
-                    <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-                    <!----article_date------>
-                    <!-- article_date -->
-
-                    <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate.
-                    </div>
-                    <!-- category_article_content -->
-
-                    <div class="media_social">
-                        <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
-                        <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                    </div>
-                    <!-- media_social -->
-
-                </div>
-            </div>
-        </div>
-        <!-- category_article_wrapper -->
-
-        <div class="category_article_wrapper">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="top_article_img">
-                        <a href="single.html" target="_self">
-                            <img class="img-responsive" src="assets/img/cam_left3.jpg" alt="feature-top">
-                        </a>
-                    </div>
-                    <!-- media_social -->
-
-                </div>
-                <div class="col-md-7">
-                    <span class="tag orange"><a href="single.html" target="_self">Camera</a></span>
-
-                    <div class="category_article_title">
-                        <h2><a href="single.html" target="_self">Canon Camera launches photo centric Android</a></h2>
-                    </div>
-                    <!-- category_article_title -->
-
-                    <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-                    <!----article_date------>
-                    <!-- article_date -->
-
-                    <div class="category_article_content">
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate.
-                    </div>
-                    <!-- category_article_content -->
-
-                    <div class="media_social">
-                        <span>
-                            <a href="#">
-                                <i class="fa fa-share-alt"></i>424
-                            </a> Shares
-                        </span>
-                        <span>
-                            <a href="#">
-                                <i class="fa fa-comments-o"></i>4
-                            </a> Comments
-                        </span>
-                    </div>
-                    <!-- media_social -->
-
-                </div>
-                <!-- col-md-7 -->
-
-            </div>
-            <!-- row -->
-
-        </div>
-        <!-- category_article_wrapper -->
-
-        <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
-    </div>
-    <!-- Camera News Section -->
 
     <div class="category_section design">
         <div class="article_title header_blue">
@@ -690,6 +524,6 @@
 
         <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
     </div>
-    <!-- Design News Section -->
+    <!-- Design News Section --> --}}
 </div>
 @endsection

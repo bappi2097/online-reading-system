@@ -4,7 +4,8 @@
             <div class="col-md-7">
                 <div class="feature_article_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive top_static_article_img" src="{{$hotNews->image}}" alt="feature-top">
+                        <img class="img-responsive top_static_article_img -hero-hotnews" src="{{$hotNews->image}}"
+                            alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
@@ -40,25 +41,25 @@
 
             </div>
             <!-- col-md-7 -->
-
-            <div class="col-md-5">
+            @foreach ($topViews as $topView)
+            <div class="col-md-5" style="margin-bottom: 20px">
                 <div class="feature_static_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" src="assets/img/feature-static1.jpg" alt="feature-top">
+                        <img class="img-responsive" style="height: 300px; width: 457px;" src="{{$topView->image}}"
+                            alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
                     <div class="feature_article_inner">
                         <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
                         <div class="feature_article_title">
-                            <h1><a href="single.html" target="_self">Alcatel's $180 Idol 3 4.7 is a </a>
-                            </h1>
+                            <h2><a href="{{route('news', $topView->slug)}}" target="_self">{{$topView->title}}</a>
+                            </h2>
                         </div>
                         <!-- feature_article_title -->
 
-                        <div class="feature_article_date"><a href="#" target="_self">Stive Clark</a>,<a href="#"
-                                target="_self">Aug
-                                4, 2015</a></div>
+                        <div class="feature_article_date"><a href="#" target="_self">{{$topView->author}}</a>,<a
+                                href="#" target="_self">{{date("M j, Y", strtotime($topView->created_at))}}</a></div>
                         <!-- feature_article_date -->
 
                         <div class="feature_article_content">
@@ -79,9 +80,10 @@
                 <!-- feature_static_wrapper -->
 
             </div>
+            @endforeach
             <!-- col-md-5 -->
 
-            <div class="col-md-5">
+            {{-- <div class="col-md-5">
                 <div class="feature_static_last_wrapper">
                     <div class="feature_article_img">
                         <img class="img-responsive" src="assets/img/feature-static2.jpg" alt="feature-top">
@@ -118,7 +120,7 @@
                 </div>
                 <!-- feature_static_wrapper -->
 
-            </div>
+            </div> --}}
             <!-- col-md-5 -->
 
         </div>

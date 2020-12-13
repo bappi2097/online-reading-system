@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="news-author">News Author</label>
                             <input type="text" class="form-control" id="news-author" name="author" required
-                                placeholder="Joh Doe">
+                                placeholder="John Doe">
                             @error('author')
                             <span class="text-red text-xs" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -95,8 +95,7 @@
                 <div class="form-group">
                     <label for="news-quote">Quote</label>
                     <input type="text" class="form-control" id="news-quote"
-                        placeholder="People say nothing is impossible, but I do nothing every day." name="quote"
-                        required>
+                        placeholder="People say nothing is impossible, but I do nothing every day." name="quote">
                     @error('quote')
                     <span class="text-red text-xs" role="alert">
                         <strong>{{ $message }}</strong>

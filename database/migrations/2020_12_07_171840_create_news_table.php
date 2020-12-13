@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
             $table->text('short_description');
             $table->longText('body');
             $table->text('quote')->nullable();
+            $table->integer('views_count')->default(0);
             $table->timestamps();
         });
     }

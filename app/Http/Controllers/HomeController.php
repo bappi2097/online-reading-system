@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContentLayout;
 use App\Models\Meta;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $paginate = [5, 2, 3];
+        $contentLayouts = ContentLayout::orderBy('position')->get();
+        // $contentLayouts = ContentLayout::orderBy('position')->get()->map(function ($contentLayout) {
+        //     $paginate = [5, 2, 3];
+        //     return $contentLayout->newsCategory()->first()->news()->paginate($paginate[$contentLayout->layout_no - 1]);
+        // });
+        // dd($contentLayouts);
+        foreach ($contentLayouts as $contentLayout) {
+            $contentLayout->setRelation('newsCategory', $contentLayout->newsCategory()->first()->setRelation('news', $contentLayout->newsCategory()->first()->news()->paginate($paginate[$contentLayout->layout_no - 1])));
+        }
+        // dd($contentLayouts);
         return view('body', [
-            'meta' => Meta::first()
+            'meta' => Meta::first(),
+            "contentLayouts" => $contentLayouts
         ]);
     }
 }

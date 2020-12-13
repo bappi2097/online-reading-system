@@ -1,8 +1,8 @@
 <div class="col-md-4">
-    <x-partials.sidebar.popular-news />
+    <x-partials.sidebar.popular-news></x-partials.sidebar.popular-news>
     <!-- Popular News -->
 
-    <x-partials.sidebar.social-count />
+    <x-partials.sidebar.social-count></x-partials.sidebar.social-count>
     <!-- Advertisement -->
 
     <div class="widget hidden-xs m30">
@@ -10,7 +10,7 @@
     </div>
     <!-- Advertisement -->
 
-    <x-partials.sidebar.reviews />
+    <x-partials.sidebar.reviews></x-partials.sidebar.reviews>
 
     <!-- Reviews News -->
 
@@ -19,7 +19,7 @@
     </div>
     <!-- Advertisement -->
 
-    <x-partials.sidebar.most-commented />
+    <x-partials.sidebar.most-commented></x-partials.sidebar.most-commented>
     <!-- Most Commented News -->
 
     {{-- <div class="widget m30">
