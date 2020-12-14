@@ -3,21 +3,24 @@
         <h2><a href="#">Related News</a></h2>
     </div>
     <!-- entity_title -->
-
+    @foreach ($related_news as $news)
     <div class="row">
+        @if ($loop->odd)
         <div class="col-md-6">
+            @endif
             <div class="media">
                 <div class="media-left">
-                    <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
-                            alt="Generic placeholder image"></a>
+                    <a href="#"><img class="media-object -layout-1-sub-image" src="{{$news['data']->image}}"
+                            alt="{{$news['data']->title}}"></a>
                 </div>
                 <div class="media-body">
-                    <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
+                    <span class="tag purple"><a href="category.html"
+                            target="_self">{{$news['category']->name}}</a></span>
 
-                    <h3 class="media-heading"><a href="single.html" target="_self">Apple launches photo-centric
-                            wrist
-                            watch for Android</a></h3>
-                    <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
+                    <h3 class="media-heading"><a href="{{route('news',$news['data']->slug)}}"
+                            target="_self">{{$news['data']->title}}</a></h3>
+                    <span class="media-date"><a href="#">{{date("M j, Y", strtotime($news['data']->created_at))}}</a>,
+                        by: <a href="#">{{$news['data']->author}}</a></span>
 
                     <div class="media_social">
                         <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
@@ -25,63 +28,9 @@
                     </div>
                 </div>
             </div>
-            <div class="media">
-                <div class="media-left">
-                    <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg"
-                            alt="Generic placeholder image"></a>
-                </div>
-                <div class="media-body">
-                    <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
-
-                    <h3 class="media-heading"><a href="single.html" target="_self">The Portable Charger or data
-                            cable</a></h3>
-                    <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                    <div class="media_social">
-                        <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                        <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                    </div>
-                </div>
-            </div>
+            @if ($loop->even)
         </div>
-        <div class="col-md-6">
-            <div class="media">
-                <div class="media-left">
-                    <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm2.jpg"
-                            alt="Generic placeholder image"></a>
-                </div>
-                <div class="media-body">
-                    <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
-
-                    <h3 class="media-heading"><a href="single.html" target="_self">Iphone 6 launches white & Grey
-                            colors handset</a></h3>
-                    <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                    <div class="media_social">
-                        <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                        <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                    </div>
-                </div>
-            </div>
-            <div class="media">
-                <div class="media-left">
-                    <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm4.jpg"
-                            alt="Generic placeholder image"></a>
-                </div>
-                <div class="media-body">
-                    <span class="tag purple"><a href="category.html" target="_self">Mobile</a></span>
-                    <a href="single.html" target="_self">
-                        <h3 class="media-heading">Fully new look slim handset
-                            like</h3>
-                    </a>
-                    <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></span>
-
-                    <div class="media_social">
-                        <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                        <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
     </div>
+    @endforeach
 </div>

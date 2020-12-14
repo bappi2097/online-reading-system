@@ -1,5 +1,6 @@
 <div class="col-md-4">
-    <x-partials.sidebar.popular-news></x-partials.sidebar.popular-news>
+    {{-- <x-partials.sidebar.popular-news></x-partials.sidebar.popular-news> --}}
+    <x-partials.sidebar.recent-news></x-partials.sidebar.recent-news>
     <!-- Popular News -->
 
     <x-partials.sidebar.social-count></x-partials.sidebar.social-count>

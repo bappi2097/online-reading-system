@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ContentLayout;
 use App\Models\Meta;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

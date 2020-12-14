@@ -13,10 +13,10 @@ class News extends Model
     ];
     public function newsCategories()
     {
-        return $this->belongsToMany(NewsCategory::class)->withTimestamps();;
+        return $this->belongsToMany(NewsCategory::class)->withTimestamps();
     }
     public function tags()
     {
-        return $this->belongsToMany(Tag::class)->withTimestamps();;
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }
