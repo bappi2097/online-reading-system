@@ -1,4 +1,17 @@
 @extends('components.layouts.master')
+@push('meta')
+<title>{{$news->title}} | {{$meta->title}}</title>
+<link href="{{$meta->favicon}}" rel=icon>
+<meta name="author" content="coronabd-2020">
+<link rel="icon" type="image/png" href="{{$meta->logo}}">
+<meta property="og:image" content="{{asset($meta->logo)}}">
+<meta property="og:image:type" content="image/png/jpg">
+<meta property="og:description" content="{{$meta->description}}">
+<meta name="keywords" content="{{$meta->keyword}}">
+<meta property="og:image" content="{{asset($meta->logo)}}">
+<meta property="og:url" content="{{url('/')}}">
+<meta property="og:title" content="{{$meta->title}}">
+@endpush
 @section('content')
 <div class="col-md-8">
     <div class="entity_wrapper">
@@ -43,7 +56,9 @@
         </div>
         <!-- entity_thumb -->
         <br>
+        @if ($news->quote)
         <blockquote class="pull-left"> {{$news->quote}} </blockquote><br><br>
+        @endif
         <div class="entity_content">
             {!!$news->body!!}
         </div>

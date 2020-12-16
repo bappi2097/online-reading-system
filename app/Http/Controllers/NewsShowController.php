@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meta;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,7 @@ class NewsShowController extends Controller
         }
         // dd($related_news);
         return view('news', [
+            'meta' => Meta::first(),
             "news" => $news,
             "related_news" => $related_news,
         ]);

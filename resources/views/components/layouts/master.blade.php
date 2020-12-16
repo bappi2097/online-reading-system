@@ -5,7 +5,7 @@
     <x-partials.meta></x-partials.meta>
 
     <!-- web-fonts -->
-    <x-partials.style />
+    <x-partials.style></x-partials.style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,14 +18,14 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar">
     <div id="main-wrapper">
         <!-- Page Preloader -->
-        <x-layouts.app />
+        <x-layouts.app></x-layouts.app>
         <!-- .uc-mobile-menu -->
 
     </div>
     <!-- #main-wrapper -->
 
     <!-- jquery Core-->
-    <x-partials.script />
+    <x-partials.script></x-partials.script>
 </body>
 
 </html>
