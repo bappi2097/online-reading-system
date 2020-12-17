@@ -24,7 +24,8 @@
     @if ($contentLayout->layout_no == 1)
     <div class="category_section mobile">
         <div class="article_title header_purple">
-            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
+            <h2><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                    target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
         </div>
         <!----article_title------>
         @foreach ($contentLayout->newsCategory->news as $index => $news)
@@ -104,7 +105,8 @@
 
     <div class="category_section tablet">
         <div class="article_title header_pink">
-            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
+            <h2><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                    target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
         </div>
         <!-- Mobile News Section -->
 
@@ -120,7 +122,7 @@
                         </div>
                         <!-- top_article_img -->
 
-                        <span class="tag pink"><a href="category.html"
+                        <span class="tag pink"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
                                 target="_self">{{$contentLayout->newsCategory->name}}</a></span>
 
                         <div class="category_article_title">
@@ -164,7 +166,8 @@
 
     <div class="category_section camera">
         <div class="article_title header_orange">
-            <h2><a href="category.html" target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
+            <h2><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                    target="_self">{{$contentLayout->newsCategory->name}}</a></h2>
         </div>
         <!-- article_title -->
         @foreach ($contentLayout->newsCategory->news as $index => $news)
@@ -223,124 +226,129 @@
 
     {{-- <div class="category_section gadget">
         <div class="article_title header_black">
-            <h2><a href="category.html" target="_self">Gadgets</a></h2>
-        </div>
-        <div class="category_article_wrapper">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="category_article_body">
-                        <div class="top_article_img">
-                            <a href="{{route('news',$news->slug)}}" target="_self">
-    <img class="img-responsive" src="assets/img/gad_top1.jpg" alt="feature-top">
-    </a>
+            <h2><a href="{{route('category', $contentLayout->newsCategory->slug)}}" target="_self">Gadgets</a></h2>
 </div>
-<!-- top_article_img -->
+<div class="category_article_wrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="category_article_body">
+                <div class="top_article_img">
+                    <a href="{{route('news',$news->slug)}}" target="_self">
+                        <img class="img-responsive" src="assets/img/gad_top1.jpg" alt="feature-top">
+                    </a>
+                </div>
+                <!-- top_article_img -->
 
-<span class="tag black"><a href="category.html" target="_self">Gadgets</a></span>
+                <span class="tag black"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                        target="_self">Gadgets</a></span>
 
-<div class="category_article_title">
-    <h2><a href="{{route('news',$news->slug)}}" target="_self">A good news for gadget users Ds tech comming
-            soon</a>
-    </h2>
-</div>
-<!-- category_article_title -->
+                <div class="category_article_title">
+                    <h2><a href="{{route('news',$news->slug)}}" target="_self">A good news for gadget users Ds tech
+                            comming
+                            soon</a>
+                    </h2>
+                </div>
+                <!-- category_article_title -->
 
-<div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-<!----article_date------>
-<div class="category_article_content">
-    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-    procrastinate B2C users after.
-</div>
-<!-- category_article_content -->
+                <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
+                <!----article_date------>
+                <div class="category_article_content">
+                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
+                    procrastinate B2C users after.
+                </div>
+                <!-- category_article_content -->
 
-<div class="media_social">
-    <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
-    <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-</div>
-<!-- media_social -->
+                <div class="media_social">
+                    <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
+                    <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
+                </div>
+                <!-- media_social -->
 
-</div>
-<!-- category_article_body -->
-
-<div class="category_article_list">
-    <div class="media">
-        <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg" alt="Generic placeholder image"></a>
-        </div>
-        <div class="media-body">
-            <h3 class="media-heading"><a href="{{route('news',$news->slug)}}" target="_self">Apple launches
-                    photo-centric
-                    wrist watch for Android</a></h3>
-            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric
-                    joan</a></span>
-
-            <div class="media_social">
-                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
             </div>
-        </div>
-    </div>
-    <div class="media">
-        <div class="media-left">
-            <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg" alt="Generic placeholder image"></a>
-        </div>
-        <div class="media-body">
-            <h3 class="media-heading"><a href="{{route('news',$news->slug)}}" target="_self">Apple launches
-                    photo-centric
-                    wrist watch for Android</a></h3>
-            <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric
-                    joan</a></span>
+            <!-- category_article_body -->
 
-            <div class="media_social">
-                <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
-                <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
+            <div class="category_article_list">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm1.jpg"
+                                alt="Generic placeholder image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading"><a href="{{route('news',$news->slug)}}" target="_self">Apple launches
+                                photo-centric
+                                wrist watch for Android</a></h3>
+                        <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric
+                                joan</a></span>
+
+                        <div class="media_social">
+                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
+                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="assets/img/cat-mobi-sm3.jpg"
+                                alt="Generic placeholder image"></a>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading"><a href="{{route('news',$news->slug)}}" target="_self">Apple launches
+                                photo-centric
+                                wrist watch for Android</a></h3>
+                        <span class="media-date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric
+                                joan</a></span>
+
+                        <div class="media_social">
+                            <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
+                            <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- category_article_list -->
+
+        </div>
+        <!-- col-md-6 -->
+
+        <div class="col-md-6">
+            <div class="category_article_body">
+                <div class="top_article_img">
+                    <img class="img-responsive" src="assets/img/gad_top2.jpg" alt="feature-top">
+                </div>
+                <!-- top_article_img -->
+
+                <span class="tag black">Gadgets</span>
+
+                <div class="category_article_title">
+                    <h2><a href="{{route('news',$news->slug)}}" target="_self">Apple launches photo-centric app for
+                            iPads and
+                            Android
+                            tablets</a></h2>
+                </div>
+                <!-- category_article_title -->
+
+                <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
+                <!-- article_date -->
+
+                <div class="category_article_content">
+                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
+                    procrastinate B2C users after installed base benefits. Dramatically visualize customer
+                    directed
+                    convergence without revolutionary ROI.
+                </div>
+                <!-- category_article_content -->
+
+                <div class="article_social">
+                    <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
+                    <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
+                </div>
+                <!-- article_social -->
+
+            </div>
+            <!-- category_article_body -->
         </div>
     </div>
-</div>
-<!-- category_article_list -->
-
-</div>
-<!-- col-md-6 -->
-
-<div class="col-md-6">
-    <div class="category_article_body">
-        <div class="top_article_img">
-            <img class="img-responsive" src="assets/img/gad_top2.jpg" alt="feature-top">
-        </div>
-        <!-- top_article_img -->
-
-        <span class="tag black">Gadgets</span>
-
-        <div class="category_article_title">
-            <h2><a href="{{route('news',$news->slug)}}" target="_self">Apple launches photo-centric app for iPads and
-                    Android
-                    tablets</a></h2>
-        </div>
-        <!-- category_article_title -->
-
-        <div class="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-        <!-- article_date -->
-
-        <div class="category_article_content">
-            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-            procrastinate B2C users after installed base benefits. Dramatically visualize customer
-            directed
-            convergence without revolutionary ROI.
-        </div>
-        <!-- category_article_content -->
-
-        <div class="article_social">
-            <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
-            <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-        </div>
-        <!-- article_social -->
-
-    </div>
-    <!-- category_article_body -->
-</div>
-</div>
-<!-- row -->
+    <!-- row -->
 
 </div>
 <!-- category_article_wrapper -->
@@ -351,7 +359,7 @@
 
 <div class="category_section design">
     <div class="article_title header_blue">
-        <h2><a href="category.html" target="_self">Design</a></h2>
+        <h2><a href="{{route('category', $contentLayout->newsCategory->slug)}}" target="_self">Design</a></h2>
     </div>
     <!-- row -->
 
@@ -366,7 +374,8 @@
                     </div>
                     <!-- top_article_img -->
 
-                    <span class="tag blue"><a href="category.html" target="_self">Design</a></span>
+                    <span class="tag blue"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                            target="_self">Design</a></span>
 
                     <div class="category_article_title">
                         <h2><a href="{{route('news',$news->slug)}}" target="_self">Marketing Tranportation Fast and </a>
@@ -405,7 +414,8 @@
                     </div>
                     <!-- top_article_img -->
 
-                    <span class="tag blue"><a href="category.html" target="_self">Design</a></span>
+                    <span class="tag blue"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                            target="_self">Design</a></span>
 
                     <div class="category_article_title">
                         <h2><a href="{{route('news',$news->slug)}}" target="_self">Theme Hippo launches Unship </a></h2>
@@ -451,7 +461,8 @@
                     </div>
                     <!-- top_article_img -->
 
-                    <span class="tag blue"><a href="category.html" target="_self">Design</a></span>
+                    <span class="tag blue"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                            target="_self">Design</a></span>
 
                     < class="category_article_title">
                         <h2><a href="{{route('news',$news->slug)}}" target="_self">Huge Ultimate website builder </a>
@@ -488,7 +499,8 @@
                     </div>
                     <!-- top_article_img -->
 
-                    <span class="tag blue"><a href="category.html" target="_self">Design</a></span>
+                    <span class="tag blue"><a href="{{route('category', $contentLayout->newsCategory->slug)}}"
+                            target="_self">Design</a></span>
 
                     <div class="category_article_title">
                         <h2><a href="{{route('news',$news->slug)}}" target="_self">Just another theme xdesign</a></h2>
