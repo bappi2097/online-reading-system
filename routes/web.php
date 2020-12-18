@@ -79,6 +79,11 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
         Route::prefix('meta')->name('meta.')->group(function () {
             Route::put('/{meta}', [App\Http\Controllers\MetaController::class, 'update'])->name('update');
         });
+        Route::prefix('menu')->name('menu.')->group(function () {
+            Route::post('/', [App\Http\Controllers\MenuController::class, 'store'])->name('store');
+            Route::put('/{menu}', [App\Http\Controllers\MenuController::class, 'update'])->name('update');
+            Route::delete('/{menu}', [App\Http\Controllers\MenuController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 

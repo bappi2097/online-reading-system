@@ -35,7 +35,21 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'menu_name' => ['required', 'string', 'max:255'],
+            'menu_icon' => ['required', 'string', 'max:255'],
+            'menu_link' => ['required', 'string', 'max:1024']
+        ]);
+        $data = [
+            'name' => $request->menu_name,
+            'icon' => $request->menu_icon,
+            'link' => $request->menu_link,
+        ];
+        if (Menu::insert($data)) {
+            return back()->with(notification('success', 'Menu Added Successfully.'));
+        } else {
+            return back()->with(notification('danger', 'Something Went Wrong!'));
+        }
     }
 
     /**
@@ -69,7 +83,21 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        //
+        $this->validate($request, [
+            'menu_name' . $menu->id => ['required', 'string', 'max:255'],
+            'menu_icon' . $menu->id => ['required', 'string', 'max:255'],
+            'menu_link' . $menu->id => ['required', 'string', 'max:1024']
+        ]);
+        $data = [
+            'name' => $request->input('menu_name' . $menu->id),
+            'icon' => $request->input('menu_icon' . $menu->id),
+            'link' => $request->input('menu_link' . $menu->id),
+        ];
+        if ($menu->update($data)) {
+            return back()->with(notification('success', 'Menu Updated Successfully.'));
+        } else {
+            return back()->with(notification('danger', 'Something Went Wrong!'));
+        }
     }
 
     /**
@@ -80,6 +108,10 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        if ($menu->delete()) {
+            return back()->with(notification('success', 'Menu Deleted Successfully.'));
+        } else {
+            return back()->with(notification('danger', 'Something Went Wrong!'));
+        }
     }
 }

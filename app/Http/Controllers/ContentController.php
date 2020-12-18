@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Meta;
+use App\Models\NewsCategory;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,8 @@ class ContentController extends Controller
         return view('admin.content.edit', [
             "socialMedias" => SocialMedia::all(),
             "meta" => Meta::first(),
+            "menus" => Menu::all(),
+            'categories' => NewsCategory::all(),
         ]);
     }
 

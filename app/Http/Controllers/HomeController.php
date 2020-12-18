@@ -34,7 +34,7 @@ class HomeController extends Controller
         // });
         // dd($contentLayouts);
         foreach ($contentLayouts as $contentLayout) {
-            $contentLayout->setRelation('newsCategory', $contentLayout->newsCategory()->first()->setRelation('news', $contentLayout->newsCategory()->first()->news()->paginate($paginate[$contentLayout->layout_no - 1])));
+            $contentLayout->setRelation('newsCategory', $contentLayout->newsCategory()->first()->setRelation('news', $contentLayout->newsCategory()->first()->news()->latest()->paginate($paginate[$contentLayout->layout_no - 1])));
         }
         // dd($contentLayouts);
         return view('body', [
