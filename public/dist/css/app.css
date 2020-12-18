@@ -18,3 +18,7 @@
 .-layout-active:hover {
     border: 2px solid rgb(170, 204, 219);
 }
+.-category-image {
+    width: 350px !important;
+    height: 186px !important;
+}

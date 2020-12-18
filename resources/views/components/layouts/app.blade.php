@@ -1,8 +1,8 @@
-<div id="preloader">
+{{-- <div id="preloader">
     <div id="status">
         <div class="status-mes"></div>
     </div>
-</div>
+</div> --}}
 <!-- preloader -->
 
 <div class="uc-mobile-menu-pusher">

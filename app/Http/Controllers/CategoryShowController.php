@@ -9,9 +9,10 @@ class CategoryShowController extends Controller
 {
     public function showCategory($slug)
     {
-        dd(NewsCategory::where('slug', $slug)->get());
+        $news['data'] = NewsCategory::where('slug', $slug)->first()->news()->latest()->paginate(11);
+        $news['category'] = NewsCategory::select('slug', 'name')->where('slug', $slug)->first();
         return view('category', [
-            'categories' => NewsCategory::where('slug', $slug)->get()
+            'newsC' => $news,
         ]);
     }
 }

@@ -13,7 +13,11 @@
 <script src="assets/js/script.js"></script>
 
 <script src="{{asset('js/app.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script>
+    const observer = lozad();
+    observer.observe();
+</script>
 @stack('script-src')
 
 @stack('script')
