@@ -18,7 +18,7 @@
                     <li><a href="blog.html">Gadgets</a></li>
                     <li><a href="blog.html">Camera</a></li>
                     <li><a href="blog.html">Design</a></li>
-                    <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More
+                    {{-- <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More
                             <span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -59,7 +59,7 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
             <!-- .navbar-collapse -->
         </div>

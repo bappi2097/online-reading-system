@@ -52,7 +52,7 @@
         <!-- entity_social -->
 
         <div class="entity_thumb">
-            <img class="img-responsive" src="{{$news->image}}" alt="feature-top">
+            <img class="lozad img-responsive" data-src="{{$news->image}}" alt="feature-top">
         </div>
         <!-- entity_thumb -->
         <br>
@@ -87,7 +87,7 @@
     <!-- Related news -->
 
     {{-- <div class="widget_advertisement">
-        <img class="img-responsive" src="assets/img/category_advertisement.jpg" alt="feature-top">
+        <img class="lozad img-responsive" data-src="assets/img/category_advertisement.jpg" alt="feature-top">
     </div> --}}
     <!--Advertisement-->
 
@@ -95,7 +95,7 @@
     <!--Readers Comment-->
 
     {{-- <div class="widget_advertisement">
-        <img class="img-responsive" src="assets/img/category_advertisement.jpg" alt="feature-top">
+        <img class="lozad img-responsive" data-src="assets/img/category_advertisement.jpg" alt="feature-top">
     </div> --}}
     <!--Advertisement-->
 

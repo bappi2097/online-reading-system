@@ -5,8 +5,8 @@
     @foreach ($recentNews as $news)
     <div class="media">
         <div class="media-left">
-            <a href="{{route('news', $news->slug)}}"><img class="media-object" style="width: 100px; height: 100px;"
-                    src="{{$news->image}}" alt="{{$news->title}}"></a>
+            <a href="{{route('news', $news->slug)}}"><img class="lozad media-object"
+                    style="width: 100px; height: 100px;" data-src="{{$news->image}}" alt="{{$news->title}}"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">

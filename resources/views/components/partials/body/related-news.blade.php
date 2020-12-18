@@ -10,7 +10,7 @@
             @endif
             <div class="media">
                 <div class="media-left">
-                    <a href="#"><img class="media-object -layout-1-sub-image" src="{{$news['data']->image}}"
+                    <a href="#"><img class="lozad media-object -layout-1-sub-image" data-src="{{$news['data']->image}}"
                             alt="{{$news['data']->title}}"></a>
                 </div>
                 <div class="media-body">

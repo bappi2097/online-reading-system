@@ -4,8 +4,8 @@
             <div class="col-md-7">
                 <div class="feature_article_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive top_static_article_img -hero-hotnews" src="{{$hotNews->image}}"
-                            alt="feature-top">
+                        <img class="lozad img-responsive top_static_article_img -hero-hotnews"
+                            data-src="{{$hotNews->image}}" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
@@ -45,8 +45,8 @@
             <div class="col-md-5" style="margin-bottom: 20px">
                 <div class="feature_static_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" style="height: 300px; width: 457px;" src="{{$topView->image}}"
-                            alt="feature-top">
+                        <img class="lozad img-responsive" style="height: 300px; width: 457px;"
+                            data-src="{{$topView->image}}" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
@@ -86,7 +86,7 @@
             {{-- <div class="col-md-5">
                 <div class="feature_static_last_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" src="assets/img/feature-static2.jpg" alt="feature-top">
+                        <img class="lozad img-responsive" data-src="assets/img/feature-static2.jpg" alt="feature-top">
                     </div>
                     <!-- feature_article_img -->
 
