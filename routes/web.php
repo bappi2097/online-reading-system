@@ -92,9 +92,6 @@ Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name('ho
 Route::get('news/{slug}', [App\Http\Controllers\NewsShowController::class, "showNews"])->name('news');
 Route::get('category/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('category');
 Route::get('menu/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('menu');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
