@@ -70,7 +70,7 @@
             </div>
         </div>
         <!-- Header Section -->
-        <x-partials.navbar />
+        <x-partials.navbar></x-partials.navbar>
 
         <!-- .navigation-section -->
     </div>

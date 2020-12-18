@@ -37,13 +37,13 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'menu_name' => ['required', 'string', 'max:255'],
-            'menu_icon' => ['required', 'string', 'max:255'],
-            'menu_link' => ['required', 'string', 'max:1024']
+            'menu_news_category' => ['required', 'numeric'],
+            'menu_position' => ['required', 'numeric']
         ]);
         $data = [
             'name' => $request->menu_name,
-            'icon' => $request->menu_icon,
-            'link' => $request->menu_link,
+            'news_category_id' => $request->menu_news_category,
+            'position' => $request->menu_position,
         ];
         if (Menu::insert($data)) {
             return back()->with(notification('success', 'Menu Added Successfully.'));
@@ -85,13 +85,13 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'menu_name' . $menu->id => ['required', 'string', 'max:255'],
-            'menu_icon' . $menu->id => ['required', 'string', 'max:255'],
-            'menu_link' . $menu->id => ['required', 'string', 'max:1024']
+            'menu_news_category' . $menu->id => ['required', 'numeric'],
+            'menu_position' . $menu->id => ['required', 'numeric']
         ]);
         $data = [
             'name' => $request->input('menu_name' . $menu->id),
-            'icon' => $request->input('menu_icon' . $menu->id),
-            'link' => $request->input('menu_link' . $menu->id),
+            'news_category_id' => $request->input('menu_news_category' . $menu->id),
+            'position' => $request->input('menu_position' . $menu->id),
         ];
         if ($menu->update($data)) {
             return back()->with(notification('success', 'Menu Updated Successfully.'));

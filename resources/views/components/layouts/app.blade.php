@@ -9,7 +9,7 @@
     <div class="content-wrapper">
 
         <!-- header_section_wrapper -->
-        <x-partials.header />
+        <x-partials.header></x-partials.header>
         {{-- @include('components.partials.header') --}}
         @yield('hero')
         <!-- Feature News Section -->

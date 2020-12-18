@@ -91,15 +91,7 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
 Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name('home');
 Route::get('news/{slug}', [App\Http\Controllers\NewsShowController::class, "showNews"])->name('news');
 Route::get('category/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('category');
-
-Route::get("/blog", function () {
-    return view("news");
-});
-
-Route::get("/category", function () {
-    return view("category");
-});
-
+Route::get('menu/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('menu');
 // Route::get('/', function () {
 //     return view('welcome');
 // });

@@ -1,10 +1,130 @@
 @extends('admin.layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid mb-5">
     <a href="{{route('adminlte.news-category.index')}}" class="btn btn-link">
         <i class="fas fa-long-arrow-alt-left mr-1"></i>
         Back
     </a>
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">Navbar Menu</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <div class="card-body">
+            @foreach ($menus as $menu)
+            <form action="{{route('adminlte.menu.update', $menu)}}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="menu-name-{{$menu->id}}">Name</label>
+                            <input type="text" class="form-control" id="menu-name-{{$menu->id}}" placeholder="Facebook"
+                                name="menu_name{{$menu->id}}" value="{{$menu->name}}" required>
+                            @error('menu_name' . $menu->id)
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="menu-news-category">Category Slug</label>
+                            <select name="menu_news_category{{$menu->id}}" id="menu-news-category" class="form-control">
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}" @if ($menu->news_category_id == $category->id)
+                                    selected
+                                    @endif>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('menu_news_category' . $menu->id)
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="menu-position-{{$menu->id}}">Position</label>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" id="menu-position-{{$menu->id}}"
+                                name="menu_position{{$menu->id}}" placeholder="1" value="{{$menu->position}}"
+                                value="{{$menu->position}}" required>
+                            @error('menu_position' . $menu->id)
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="submit" class="btn btn-primary" style="margin-top: 2rem;" value="Update">
+                        <a href="{{ route('adminlte.menu.destroy', $menu) }}" class="btn btn-danger mr-2"
+                            style="margin-top: 2rem;"
+                            onclick="event.preventDefault(); document.getElementById('{{$menu->id}}-menu-delete').submit();">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <form id="{{$menu->id}}-menu-delete" action="{{ route('adminlte.menu.destroy', $menu) }}" method="POST">
+                @csrf
+                @method('DELETE')
+            </form>
+            @endforeach
+            <form role="form" action="{{route('adminlte.menu.store')}}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="menu-name">Name</label>
+                            <input type="text" class="form-control" id="menu-name" placeholder="Business"
+                                name="menu_name">
+                            @error('menu_name')
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="menu-news-category">Category Slug</label>
+                            <select name="menu_news_category" id="menu-news-category" class="form-control">
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('menu_news_category')
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="menu-position">Position</label>
+                            <input type="number" class="form-control" id="menu-position" placeholder="1"
+                                name="menu_position">
+                            @error('menu_position')
+                            <span class="text-red text-xs" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="submit" class="btn btn-success" style="margin-top: 2rem;" value="Add">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mb-5">
     <div class="card card-secondary">
         <div class="card-header">
             <h3 class="card-title">Social Media</h3>
@@ -115,7 +235,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <input type="submit" class="btn btn-secondary" style="margin-top: 2rem;" value="Add">
+                        <input type="submit" class="btn btn-success" style="margin-top: 2rem;" value="Add">
                     </div>
                 </div>
             </form>
@@ -123,7 +243,7 @@
     </div>
 </div>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mb-5">
     <div class="card card-secondary">
         <div class="card-header">
             <h3 class="card-title">Meta</h3>
@@ -198,7 +318,7 @@
                             <img id="meta-logo" src="{{$meta->logo}}" alt="your image" width="105" height="112" /><br>
                             <input type='file' name="meta_logo" id="meta-logo-btn" style="display: none;"
                                 onchange="readURL(this);" accept=".png, .gif, .jpg" />
-                            <input type="button" value="Update Logo"
+                            <input class="btn btn-secondary" type="button" value="Update Logo"
                                 onclick="document.getElementById('meta-logo-btn').click();" />
 
                         </div>
@@ -214,7 +334,7 @@
                                 height="112" /><br>
                             <input type='file' name="meta_favicon" id="meta-favicon-btn" style="display: none;"
                                 onchange="readURLFavicon(this);" accept=".png, .gif, .jpg" />
-                            <input type="button" value="Update Favicon"
+                            <input class="btn btn-secondary" type="button" value="Update Favicon"
                                 onclick="document.getElementById('meta-favicon-btn').click();" />
 
                         </div>
@@ -226,129 +346,6 @@
                     </div>
                 </div>
                 <input type="submit" class="btn btn-success" style="margin-top: 2rem;" value="Save">
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <a href="{{route('adminlte.news-category.index')}}" class="btn btn-link">
-        <i class="fas fa-long-arrow-alt-left mr-1"></i>
-        Back
-    </a>
-    <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Navbar Menu</h3>
-        </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <div class="card-body">
-            @foreach ($menus as $menu)
-            <form action="{{route('adminlte.social-media.update', $menu)}}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="social-media-name-{{$menu->id}}">Name</label>
-                            <input type="text" class="form-control" id="social-media-name-{{$menu->id}}"
-                                placeholder="Facebook" name="social_media_name{{$menu->id}}" value="{{$menu->name}}"
-                                required>
-                            @error('social_media_name' . $menu->id)
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="social-media-link-{{$menu->id}}">Link</label>
-                            <input type="text" class="form-control" id="social-media-link-{{$menu->id}}"
-                                placeholder="www.facebook.com" name="social_media_link{{$menu->id}}"
-                                value="{{$menu->link}}" required>
-                            @error('social_media_link' . $menu->id)
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="social-media-icon-{{$menu->id}}">Icon</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">{!!$menu->icon!!}</span>
-                            </div>
-                            <input type="text" class="form-control" id="social-media-icon-{{$menu->id}}"
-                                name="social_media_icon{{$menu->id}}" placeholder="<i class='fab fa-facebook-f'></i>"
-                                value="{{$menu->icon}}" required>
-                            @error('social_media_icon' . $menu->id)
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <input type="submit" class="btn btn-primary" style="margin-top: 2rem;" value="Update">
-                        <a href="{{ route('adminlte.social-media.destroy', $menu) }}" class="btn btn-danger mr-2"
-                            style="margin-top: 2rem;"
-                            onclick="event.preventDefault(); document.getElementById('{{$menu->id}}-social-media-delete').submit();">
-                            Delete
-                        </a>
-                    </div>
-                </div>
-            </form>
-            <form id="{{$menu->id}}-social-media-delete" action="{{ route('adminlte.social-media.destroy', $menu) }}"
-                method="POST">
-                @csrf
-                @method('DELETE')
-            </form>
-            @endforeach
-            <form role="form" action="{{route('adminlte.social-media.store')}}" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="social-media-name">Name</label>
-                            <input type="text" class="form-control" id="social-media-name" placeholder="Facebook"
-                                name="social_media_name">
-                            @error('social_media_name')
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="social-media-link">Category Slug</label>
-                            <input type="text" class="form-control" id="social-media-link"
-                                placeholder="www.facebook.com" name="social_media_link">
-                            @error('social_media_link')
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label for="social-media-icon">Icon</label>
-                            <input type="text" class="form-control" id="social-media-icon"
-                                placeholder="<i class='fab fa-facebook-f'></i>" name="social_media_icon">
-                            @error('social_media_icon')
-                            <span class="text-red text-xs" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <input type="submit" class="btn btn-secondary" style="margin-top: 2rem;" value="Add">
-                    </div>
-                </div>
             </form>
         </div>
     </div>
