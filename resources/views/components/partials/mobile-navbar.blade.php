@@ -4,13 +4,18 @@
     <div>
         <div>
             <ul id="menu">
-                <li class="active"><a href="blog.html">News</a></li>
+                {{-- <li class="active"><a href="blog.html">News</a></li>
                 <li><a href="category.html">Mobile</a></li>
                 <li><a href="blog.html">Tablet</a></li>
                 <li><a href="category.html">Gadgets</a></li>
                 <li><a href="blog.html">Camera</a></li>
-                <li><a href="category.html">Design</a></li>
-                <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More
+                <li><a href="category.html">Design</a></li> --}}
+                <li class="@if(url()->current() == url('/')) active @endif"><a href="/">Home</a></li>
+                @foreach ($menus as $menu)
+                <li class="@if(url()->current() == route('menu', $menu->newsCategory->slug)) active @endif"><a
+                        href="{{route('menu', $menu->newsCategory->slug)}}">{{$menu->name}}</a></li>
+                @endforeach
+                {{-- <li class="dropdown m-menu-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More
                         <span><i class="fa fa-angle-down"></i></span></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -50,7 +55,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -4,13 +4,13 @@
 <link href="{{$meta->favicon}}" rel=icon>
 <meta name="author" content="coronabd-2020">
 <link rel="icon" type="image/png" href="{{$meta->logo}}">
-<meta property="og:image" content="{{asset($meta->logo)}}">
+<meta property="og:image" content="{{$news->image}}">
 <meta property="og:image:type" content="image/png/jpg">
-<meta property="og:description" content="{{$meta->description}}">
+<meta property="og:description" content="{{$news->short_description}}">
 <meta name="keywords" content="{{$meta->keyword}}">
-<meta property="og:image" content="{{asset($meta->logo)}}">
-<meta property="og:url" content="{{url('/')}}">
-<meta property="og:title" content="{{$meta->title}}">
+<meta property="og:image" content="{{$news->image}}">
+<meta property="og:url" content="{{route('news', $news->slug)}}">
+<meta property="og:title" content="{{$news->title}}">
 @endpush
 @section('content')
 <div class="col-md-8">

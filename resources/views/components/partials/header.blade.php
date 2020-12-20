@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="/"><img class="lozad" data-src="{{$meta->logo}}" alt="Tech NewsLogo"></a>
+                        <a href="/"><img class="lozad" src="{{$meta->logo}}" alt="Tech NewsLogo"></a>
                     </div>
                     <!-- Logo Section -->
                 </div>

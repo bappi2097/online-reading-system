@@ -46,5 +46,3 @@
 <!-- .offcanvas-pusher -->
 
 <a href="#" class="crunchify-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-
-<x-partials.mobile-navbar />

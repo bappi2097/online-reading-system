@@ -20,7 +20,7 @@
         <!-- Page Preloader -->
         <x-layouts.app></x-layouts.app>
         <!-- .uc-mobile-menu -->
-
+        <x-partials.mobile-navbar></x-partials.mobile-navbar>
     </div>
     <!-- #main-wrapper -->
 
