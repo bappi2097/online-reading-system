@@ -30,8 +30,13 @@
                 <div class="col-md-4">
                     <div class="right_section">
                         <ul class="nav navbar-nav">
+                            @auth
+                            <li><a href="#">Bappi Saha</a></li>
+                            @endauth
+                            @guest
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Register</a></li>
+                            @endguest
                             <li class="dropdown lang">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">En <i

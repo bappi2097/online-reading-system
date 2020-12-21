@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth()->login(Admin::first());
 // auth()->logout();
 Route::prefix('adminlte')->name('adminlte.')->group(function () {
     Route::name('auth.')->group(function () {
@@ -28,8 +30,8 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
         Route::name('auth.')->group(function () {
-            Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
-            Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
+            // Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
+            // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
         });
         Route::prefix('news-category')->name('news-category.')->group(function () {
             Route::get('/', [App\Http\Controllers\NewsCategoryController::class, 'index'])->name('index');

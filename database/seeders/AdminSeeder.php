@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'first_name' => "Bappi",
             'last_name' => "Saha",
             'email' => 'admin@admin.com',
-            'password' => "$2y$10$1n4x1BPcTRxS6Z9x9NuzteT8ESiQ0sKhQJZ.twmsbeg4FvyPzGU1C",
+            'password' => "$2y$10$9Byo02hPNA/w64V6lMCYu.eAcBmP/ezoSh4Hc6GFdjDRqgjI0FpRq",
         ]);
     }
 }
