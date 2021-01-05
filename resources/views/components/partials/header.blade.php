@@ -34,8 +34,8 @@
                             <li><a href="#">Bappi Saha</a></li>
                             @endauth
                             @guest
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="{{route('login')}}">Login</a></li>
+                            <li><a href="{{route('register')}}">Register</a></li>
                             @endguest
                             <li class="dropdown lang">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
@@ -54,10 +54,10 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <div class="head-search">
-                                            <form role="form">
+                                            <form action="{{route('search')}}" method="get">
                                                 <!-- Input Group -->
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="search"
                                                         placeholder="Type Something"> <span class="input-group-btn">
                                                         <button type="submit" class="btn btn-primary">Search
                                                         </button>

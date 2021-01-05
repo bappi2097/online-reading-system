@@ -22,17 +22,17 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
         Route::get('login', [App\Http\Controllers\Auth\AdminLoginController::class, 'showAdminLoginForm'])->name('login');
         Route::post('login', [App\Http\Controllers\Auth\AdminLoginController::class, 'adminLogin'])->name('login');
         Route::post('logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
-        // Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
-        // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
+        Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
+        Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
     });
     Route::middleware('auth:admin')->group(function () {
         Route::get('dashboard', function () {
             return view('admin.dashboard');
         })->name('dashboard');
-        Route::name('auth.')->group(function () {
-            // Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
-            // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
-        });
+        // Route::name('auth.')->group(function () {
+        //     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
+        //     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
+        // });
         Route::prefix('news-category')->name('news-category.')->group(function () {
             Route::get('/', [App\Http\Controllers\NewsCategoryController::class, 'index'])->name('index');
             Route::get('create', [App\Http\Controllers\NewsCategoryController::class, 'create'])->name('create');
@@ -94,10 +94,10 @@ Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name('ho
 Route::get('news/{slug}', [App\Http\Controllers\NewsShowController::class, "showNews"])->name('news');
 Route::get('category/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('category');
 Route::get('menu/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('menu');
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+Route::get('search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
+// Route::group(['prefix' => 'admin'], function () {
+//     Voyager::routes();
+// });
 
 Auth::routes();
 
