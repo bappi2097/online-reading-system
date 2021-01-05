@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Models\Admin;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Member;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -40,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:member');
         // $this->middleware('guest:admin');
         // $this->middleware('guest:member');
     }
@@ -54,8 +53,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:members'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -68,8 +68,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return Member::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -96,25 +97,25 @@ class RegisterController extends Controller
         ]);
         return redirect()->back();
     }
-    public function showMemberRegisterForm()
-    {
-        return view('Member.auth.register');
-    }
-    protected function createMember(Request $request)
-    {
-        // dd(true);
-        $this->validate($request, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:members'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-        $member = Member::create([
-            'first_name' => $request['first_name'],
-            'last_name' => $request['last_name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-        ]);
-        return redirect()->back();
-    }
+    // public function showMemberRegisterForm()
+    // {
+    //     return view('Member.auth.register');
+    // }
+    // protected function createMember(Request $request)
+    // {
+    //     // dd(true);
+    //     $this->validate($request, [
+    //         'first_name' => ['required', 'string', 'max:255'],
+    //         'last_name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:members'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    //     $member = Member::create([
+    //         'first_name' => $request['first_name'],
+    //         'last_name' => $request['last_name'],
+    //         'email' => $request['email'],
+    //         'password' => bcrypt($request['password']),
+    //     ]);
+    //     return redirect()->back();
+    // }
 }

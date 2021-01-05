@@ -5,8 +5,19 @@
         <form action="{{route('register')}}" method="POST">
             @csrf
             <div class="form-group w-100">
-                <label for="name">Name</label>
-                <input id="name" type="text" class="form-control w-100" placeholder="John Doe" name="name" required>
+                <label for="first_name">First Name</label>
+                <input id="first_name" type="text" class="form-control w-100" placeholder="John Doe" name="first_name"
+                    required>
+                @error('email')
+                <span class="text-danger" role="alert">
+                    {{ $message }}
+                </span>
+                @enderror
+            </div>
+            <div class="form-group w-100">
+                <label for="last_name">Last Name</label>
+                <input id="last_name" type="text" class="form-control w-100" placeholder="John Doe" name="last_name"
+                    required>
                 @error('email')
                 <span class="text-danger" role="alert">
                     {{ $message }}
