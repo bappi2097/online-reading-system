@@ -89,7 +89,7 @@ class MetaController extends Controller
 
 
         if ($request->hasFile('meta_logo')) {
-            unlink(public_path($meta->logo));
+            // unlink(public_path($meta->logo));
             $logo = uniqid(11) . '.' . $request->file('meta_logo')->getClientOriginalExtension();
             $request->file('meta_logo')->move(public_path('assets\\img'), $logo);
             $data["logo"] = '\\assets\\img\\' . $logo;
@@ -97,7 +97,7 @@ class MetaController extends Controller
 
 
         if ($request->hasFile('meta_favicon')) {
-            unlink(public_path($meta->favicon));
+            // unlink(public_path($meta->favicon));
             $favicon = uniqid(11) . '.' . $request->file('meta_favicon')->getClientOriginalExtension();
             $request->file('meta_favicon')->move(public_path('assets\\img'), $favicon);
             $data["favicon"] = '\\assets\\img\\' . $favicon;

@@ -51,7 +51,7 @@
                     <div class="inner">
                         <h3>{{$comment}}</h3>
 
-                        <p>Comment</p>
+                        <p>Comments</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -81,7 +81,7 @@
                     <div class="inner">
                         <h3>{{$interaction_ratio}}<sup style="font-size: 20px">%</sup></h3>
 
-                        <p>Interaction Ration</p>
+                        <p>Interaction Ratio</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
