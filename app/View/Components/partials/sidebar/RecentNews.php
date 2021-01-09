@@ -15,7 +15,7 @@ class RecentNews extends Component
     public $recentNews;
     public function __construct()
     {
-        $this->recentNews = News::latest()->paginate(5);
+        $this->recentNews = News::latest()->paginate(10);
     }
 
     /**

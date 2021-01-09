@@ -1,6 +1,6 @@
 @extends('components.layouts.master')
 @section('content')
-<x-partials.breadcrumb></x-partials.breadcrumb>
+{{-- <x-partials.breadcrumb></x-partials.breadcrumb> --}}
 <div class="col-md-8">
     @foreach ($newsC['data'] as $news)
     @if ($loop->first)

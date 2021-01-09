@@ -26,9 +26,10 @@ Route::prefix('adminlte')->name('adminlte.')->group(function () {
         Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
     });
     Route::middleware('auth:admin')->group(function () {
-        Route::get('dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        //     Route::get('dashboard', function () {
+        //         return view('admin.dashboard');
+        //     })->name('dashboard');
+        Route::get('dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('dashboard');
         // Route::name('auth.')->group(function () {
         //     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm'])->name('register');
         //     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'createAdmin'])->name('register');
@@ -95,6 +96,12 @@ Route::get('news/{slug}', [App\Http\Controllers\NewsShowController::class, "show
 Route::get('category/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('category');
 Route::get('menu/{slug}', [App\Http\Controllers\CategoryShowController::class, "showCategory"])->name('menu');
 Route::get('search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
+
+Route::prefix('comment')->name('comment.')->group(function () {
+    Route::post('/{news}', [\App\Http\Controllers\CommentController::class, 'store'])->name('store');
+    Route::get('/like/{comment}', [\App\Http\Controllers\CommentController::class, 'like'])->name('like');
+    Route::get('/dislike/{comment}', [\App\Http\Controllers\CommentController::class, 'dislike'])->name('dislike');
+});
 // Route::group(['prefix' => 'admin'], function () {
 //     Voyager::routes();
 // });

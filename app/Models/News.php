@@ -19,4 +19,8 @@ class News extends Model
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

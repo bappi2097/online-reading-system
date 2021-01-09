@@ -33,6 +33,7 @@ class NewsShowController extends Controller
             'meta' => Meta::first(),
             "news" => $news,
             "related_news" => $related_news,
+            "comments" => $news->comments
         ]);
     }
 }

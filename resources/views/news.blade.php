@@ -25,7 +25,7 @@
         </div>
         <!-- entity_meta -->
 
-        <div class="entity_rating">
+        {{-- <div class="entity_rating">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -48,11 +48,11 @@
             <a href="#" class="icons-sm tmb-ic"><i class="fab fa-instagram"> </i></a>
             <!--Pinterest-->
             <a href="#" class="icons-sm rss-ic"><i class="fa fa-rss"> </i></a>
-        </div>
+        </div> --}}
         <!-- entity_social -->
 
         <div class="entity_thumb">
-            <img class="lozad img-responsive" data-src="{{$news->image}}" alt="feature-top">
+            <img class="img-responsive" src="{{$news->image}}" alt="feature-top">
         </div>
         <!-- entity_thumb -->
         <br>
@@ -83,7 +83,8 @@
 
     </div>
     <!-- entity_wrapper -->
-    <x-partials.body.related-news :relatedNews="$related_news"></x-partials.body.related-news>
+    {{-- <x-partials.body.related-news :relatedNews="$related_news"></x-partials.body.related-news> --}}
+    @include('comment.related-news')
     <!-- Related news -->
 
     {{-- <div class="widget_advertisement">
@@ -91,15 +92,16 @@
     </div> --}}
     <!--Advertisement-->
 
-    <x-partials.body.comment />
+    @include('comment.comment')
     <!--Readers Comment-->
 
     {{-- <div class="widget_advertisement">
         <img class="lozad img-responsive" data-src="assets/img/category_advertisement.jpg" alt="feature-top">
     </div> --}}
     <!--Advertisement-->
-
-    <x-partials.body.comment-form />
+    @auth
+    @include('comment.comment-form')
+    @endauth
     <!--Entity Comments -->
 
 </div>

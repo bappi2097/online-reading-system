@@ -3,24 +3,24 @@
     <x-partials.sidebar.recent-news></x-partials.sidebar.recent-news>
     <!-- Popular News -->
 
-    <x-partials.sidebar.social-count></x-partials.sidebar.social-count>
+    {{-- <x-partials.sidebar.social-count></x-partials.sidebar.social-count> --}}
     <!-- Advertisement -->
 
-    <div class="widget hidden-xs m30">
+    {{-- <div class="widget hidden-xs m30">
         <img class="img-responsive widget_img" src="assets/img/right_add5.jpg" alt="add_one">
-    </div>
+    </div> --}}
     <!-- Advertisement -->
 
-    <x-partials.sidebar.reviews></x-partials.sidebar.reviews>
+    {{-- <x-partials.sidebar.reviews></x-partials.sidebar.reviews> --}}
 
     <!-- Reviews News -->
 
-    <div class="widget hidden-xs m30">
+    {{-- <div class="widget hidden-xs m30">
         <img class="img-responsive widget_img" src="assets/img/right_add6.jpg" alt="add_one">
-    </div>
+    </div> --}}
     <!-- Advertisement -->
 
-    <x-partials.sidebar.most-commented></x-partials.sidebar.most-commented>
+    {{-- <x-partials.sidebar.most-commented></x-partials.sidebar.most-commented> --}}
     <!-- Most Commented News -->
 
     {{-- <div class="widget m30">
@@ -75,8 +75,8 @@
     </div> --}}
     <!--  Readers Corner News -->
 
-    <div class="widget hidden-xs m30">
+    {{-- <div class="widget hidden-xs m30">
         <img class="img-responsive widget_img" src="assets/img/podcast.jpg" alt="add_one">
-    </div>
+    </div> --}}
     <!--Advertisement-->
 </div>
