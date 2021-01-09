@@ -38,7 +38,7 @@ class NewsCategorySeeder extends Seeder
         NewsCategory::create(
             [
                 'name' => 'Top Viewd',
-                'slug' => 'Top Viwed',
+                'slug' => 'top-viwed',
             ],
         );
     }

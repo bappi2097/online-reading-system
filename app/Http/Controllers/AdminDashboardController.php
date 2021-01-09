@@ -17,11 +17,12 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
+        $interaction_ratio = News::count() != 0 && Comment::count() != 0 ? News::count() / Comment::count() : 0;
         return view('admin.dashboard', [
             "user" => User::count(),
             'news' => News::count(),
             "comment" => Comment::count(),
-            'interaction_ratio' => News::count() / Comment::count(),
+            'interaction_ratio' => $interaction_ratio,
         ]);
     }
 
