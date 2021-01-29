@@ -54,10 +54,10 @@
                         {{$news->short_description}}
                     </div>
                     <!----category_article_content------>
-                    <div class="media_social">
+                    {{-- <div class="media_social">
                         <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
                         <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                    </div>
+                    </div> --}}
                     <!----media_social------>
                 </div>
             </div>
@@ -83,10 +83,10 @@
                             <span class="media-date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>,
                                 by: <a href="#">{{$news->author}}</a></span>
 
-                            <div class="media_social">
+                            {{-- <div class="media_social">
                                 <span><a href="#"><i class="fa fa-share-alt"></i>424</a> Shares</span>
                                 <span><a href="#"><i class="fa fa-comments-o"></i>4</a> Comments</span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     @if ($loop->odd || $loop->last)
@@ -98,7 +98,7 @@
         @endif
         @endif
         @endforeach
-        <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
+        <p class="divider"><a href="{{route('category', $contentLayout->newsCategory->slug)}}">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Mobile News Section -->
     @elseif($contentLayout->layout_no == 2)
@@ -140,10 +140,10 @@
                         </div>
                         <!-- category_article_content -->
 
-                        <div class="media_social">
+                        {{-- <div class="media_social">
                             <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
                             <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                        </div>
+                        </div> --}}
                         <!-- media_social -->
 
                     </div>
@@ -159,7 +159,7 @@
         </div>
         <!-- category_article_wrapper -->
 
-        <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
+        <p class="divider"><a href="{{route('category', $contentLayout->newsCategory->slug)}}">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Tablet News Section -->
     @elseif($contentLayout->layout_no == 3)
@@ -200,10 +200,10 @@
                     </div>
                     <!-- category_article_content -->
 
-                    <div class="media_social">
+                    {{-- <div class="media_social">
                         <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
                         <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                    </div>
+                    </div> --}}
                     <!-- media_social -->
 
                 </div>
@@ -215,7 +215,7 @@
         </div>
         <!-- category_article_wrapper -->
         @endforeach
-        <p class="divider"><a href="#">More News&nbsp;&raquo;</a></p>
+        <p class="divider"><a href="{{route('category', $contentLayout->newsCategory->slug)}}">More News&nbsp;&raquo;</a></p>
     </div>
     <!-- Camera News Section -->
 

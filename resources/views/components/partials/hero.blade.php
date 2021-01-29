@@ -27,10 +27,10 @@
                         </div>
                         <!-- feature_article_content -->
 
-                        <div class="article_social">
+                        {{-- <div class="article_social">
                             <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
                             <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-                        </div>
+                        </div> --}}
                         <!-- article_social -->
 
                     </div>
@@ -67,10 +67,10 @@
                         </div>
                         <!-- feature_article_content -->
 
-                        <div class="article_social">
+                        {{-- <div class="article_social">
                             <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
                             <span><i class="fa fa-comments-o"></i><a href="#">4</a>Comments</span>
-                        </div>
+                        </div> --}}
                         <!-- article_social -->
 
                     </div>

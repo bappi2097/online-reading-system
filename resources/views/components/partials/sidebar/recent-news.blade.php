@@ -13,14 +13,14 @@
                 <a href="{{route('news', $news->slug)}}" target="_self">{{$news->title}}</a>
             </h3> <span class="media-date"><a href="#">{{date("M j, Y", strtotime($news->created_at))}}</a>, by: <a
                     href="#">{{$news->author}}</a></span>
-            <div class="widget_article_social">
+            {{-- <div class="widget_article_social">
                 <span>
                     <a href="single.html" target="_self"> <i class="fa fa-share-alt"></i>424</a> Shares
                 </span>
                 <span>
                     <a href="single.html" target="_self"><i class="fa fa-comments-o"></i>4</a> Comments
                 </span>
-            </div>
+            </div> --}}
         </div>
     </div>
     @endforeach

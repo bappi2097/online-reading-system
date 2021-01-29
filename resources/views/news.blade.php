@@ -72,10 +72,10 @@
             </div>
             <!-- entity_tag -->
 
-            <div class="entity_social">
+            {{-- <div class="entity_social">
                 <span><i class="fa fa-share-alt"></i>424 <a href="#">Shares</a> </span>
                 <span><i class="fa fa-comments-o"></i>4 <a href="#">Comments</a> </span>
-            </div>
+            </div> --}}
             <!-- entity_social -->
 
         </div>

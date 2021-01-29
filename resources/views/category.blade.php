@@ -34,10 +34,10 @@
         </div>
         <!-- entity_content -->
 
-        <div class="entity_social">
+        {{-- <div class="entity_social">
             <span><i class="fa fa-share-alt"></i>424 <a href="#">Shares</a> </span>
             <span><i class="fa fa-comments-o"></i>4 <a href="#">Comments</a> </span>
-        </div>
+        </div> --}}
         <!-- entity_social -->
 
     </div>
@@ -69,10 +69,10 @@
                 </div>
                 <!-- category_article_content -->
 
-                <div class="article_social">
+                {{-- <div class="article_social">
                     <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
                     <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                </div>
+                </div> --}}
                 <!-- article_social -->
 
             </div>
@@ -104,10 +104,10 @@
                 </div>
                 <!-- category_article_content -->
 
-                <div class="article_social">
+                {{-- <div class="article_social">
                     <span><a href="#"><i class="fa fa-share-alt"></i>424 </a> Shares</span>
                     <span><i class="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                </div>
+                </div> --}}
                 <!-- article_social -->
 
             </div>

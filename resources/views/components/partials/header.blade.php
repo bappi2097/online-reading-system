@@ -31,7 +31,7 @@
                     <div class="right_section">
                         <ul class="nav navbar-nav">
                             @auth
-                            <li><a href="#">Bappi Saha</a></li>
+                            <li><a href="#">{{auth()->user()->first_name . " " . auth()->user()->last_name}}</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

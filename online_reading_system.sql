@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 06:03 AM
+-- Generation Time: Jan 29, 2021 at 03:18 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.1
 
@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'John', 'Doe', 'admin@admin.com', NULL, '$2y$10$9Byo02hPNA/w64V6lMCYu.eAcBmP/ezoSh4Hc6GFdjDRqgjI0FpRq', 'knbRC0php5usUK8i7zJQmWenLTCEoFRprVv6S4eEkei9qU1SlYFJ3NbbD6LK', '2020-12-20 08:56:59', '2020-12-20 08:56:59');
+(1, 'John', 'Doe', 'admin@admin.com', NULL, '$2y$10$9Byo02hPNA/w64V6lMCYu.eAcBmP/ezoSh4Hc6GFdjDRqgjI0FpRq', 'wuLmX2k3ivLt924URqO7MDFnbuZMQ4h1UPN4PO7COy0uJvX9apMCc7KRdRBh', '2021-01-09 11:42:59', '2021-01-09 11:42:59');
 
 -- --------------------------------------------------------
 
@@ -73,18 +73,18 @@ CREATE TABLE `comments` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `news_id` bigint(20) UNSIGNED NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `user_id`, `news_id`, `created_at`, `updated_at`, `text`) VALUES
-(1, 5, 12, NULL, NULL, 'adssadsadasd'),
-(2, 5, 12, NULL, '2021-01-08 14:51:40', 'hi there');
+INSERT INTO `comments` (`id`, `user_id`, `news_id`, `text`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 'john doe is dead', NULL, NULL),
+(2, 1, 2, 'dsadsad', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -106,10 +106,8 @@ CREATE TABLE `content_layouts` (
 --
 
 INSERT INTO `content_layouts` (`id`, `news_category_id`, `layout_no`, `position`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, 2, NULL, NULL),
-(3, 2, 2, 2, NULL, '2020-12-13 08:53:13'),
-(4, 4, 3, 3, NULL, NULL),
-(5, 3, 1, 4, NULL, NULL);
+(1, 1, 1, 1, NULL, NULL),
+(2, 2, 3, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -176,27 +174,14 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Table structure for table `likes`
 --
 
-CREATE TABLE `members` (
+CREATE TABLE `likes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`id`, `created_at`, `updated_at`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`) VALUES
-(2, '2021-01-05 11:15:36', '2021-01-05 11:15:36', 'Bappi', 'Saha', 'admin@admin.com', NULL, '$2y$10$iUkfEgyrcXbZLYEB4pOkL.c62K5FSy6QMZn3XsVsXI8ab1nFqy1ra', 'JjxeTSc68gJ9gXPHa3Fp03pkvJTkCHvTaCRpKFIZEF6V4LelYArq3eUrTn9L');
 
 -- --------------------------------------------------------
 
@@ -257,7 +242,7 @@ CREATE TABLE `metas` (
 --
 
 INSERT INTO `metas` (`id`, `title`, `author`, `logo`, `favicon`, `description`, `keyword`, `copyright`, `created_at`, `updated_at`) VALUES
-(1, 'ORS (Online Reading System)', 'Akash Khan', '\\assets\\img\\115fd3be4d08f42.png', '\\assets\\img\\115fd3beab0551b.png', 'Competently conceptualize go forward testing procedures and B2B expertise. Phosfluorescently cultivates principle-centered methods. of empowerment through fully researched.', 'news, newspaper, online reading system, ors', '© Copyright Daffodil Software Ltd.', '2020-12-11 09:04:10', '2020-12-18 07:27:11');
+(1, 'ORS (Online Reading System)', 'Akash', '\\assets\\img\\115ff9ed364f081.png', '\\assets\\img\\115ff9ed36513c1.png', 'Competently conceptualize go forward testing procedures and B2B expertise. Phosfluorescently cultivate principle-centered methods.of empowerment through fully researched.', 'news, news-paper, online reading system, ors', '© Copyright DIU', '2021-01-09 11:42:59', '2021-01-09 11:51:50');
 
 -- --------------------------------------------------------
 
@@ -303,25 +288,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2018_03_14_000000_add_details_to_data_types_table', 1),
 (26, '2018_03_16_000000_make_settings_value_nullable', 1),
 (27, '2019_08_19_000000_create_failed_jobs_table', 1),
-(28, '2020_11_28_104242_create_members_table', 1),
-(29, '2020_12_04_170632_create_admins_table', 1),
-(30, '2020_12_06_153409_create_news_categories_table', 1),
-(31, '2020_12_07_171840_create_news_table', 1),
-(32, '2020_12_08_070011_create_tags_table', 1),
-(33, '2020_12_09_101524_create_news_news_category', 1),
-(34, '2020_12_09_102025_create_news_tag', 1),
-(35, '2020_12_10_094141_create_content_layouts_table', 2),
-(36, '2020_12_10_161314_create_social_media_table', 3),
-(37, '2020_12_10_181850_add_name_column', 4),
-(38, '2020_12_11_112323_create_metas_table', 5),
-(39, '2020_12_13_160757_add_views_count_to_news', 6),
-(40, '2020_12_18_091142_create_menus_table', 7),
-(41, '2020_12_19_115114_add_detail_to_members', 8),
-(42, '2021_01_08_162025_add_to_users', 9),
-(43, '2021_01_08_173801_drop_from_users', 10),
-(44, '2021_01_08_195517_create_comments_table', 11),
-(45, '2021_01_08_203722_add_to_comment', 12),
-(46, '2021_01_08_205317_drop_from_comments', 13);
+(28, '2020_12_04_170632_create_admins_table', 1),
+(29, '2020_12_06_153409_create_news_categories_table', 1),
+(30, '2020_12_07_171840_create_news_table', 1),
+(31, '2020_12_08_070011_create_tags_table', 1),
+(32, '2020_12_09_101524_create_news_news_category', 1),
+(33, '2020_12_09_102025_create_news_tag', 1),
+(34, '2020_12_10_094141_create_content_layouts_table', 1),
+(35, '2020_12_10_161314_create_social_media_table', 1),
+(36, '2020_12_11_112323_create_metas_table', 1),
+(37, '2020_12_18_091142_create_menus_table', 1),
+(38, '2021_01_08_195517_create_comments_table', 1),
+(39, '2021_01_08_205413_create_likes_table', 1);
 
 -- --------------------------------------------------------
 
@@ -343,10 +321,8 @@ CREATE TABLE `nav_menus` (
 --
 
 INSERT INTO `nav_menus` (`id`, `name`, `news_category_id`, `position`, `created_at`, `updated_at`) VALUES
-(2, 'Business', 1, 1, NULL, NULL),
-(3, 'Sports', 2, 2, NULL, NULL),
-(4, 'Lifestyle', 3, 3, NULL, NULL),
-(5, 'Country', 4, 4, NULL, NULL);
+(1, 'Business', 1, 1, NULL, NULL),
+(2, 'Sports', 2, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -363,28 +339,18 @@ CREATE TABLE `news` (
   `short_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `quote` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `views_count` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `views_count` int(11) NOT NULL DEFAULT 0
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `title`, `slug`, `image`, `author`, `short_description`, `body`, `quote`, `created_at`, `updated_at`, `views_count`) VALUES
-(1, 'Airbnb launches photo-centric app for iPads and Android tablets.', 'airbnb-launches-photo-centric-app-for-ipads-and-android-tablets', '\\news\\images\\115fd4c37b19d4e.jpg', 'Eric joan', 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.', '<div class=\"entity_content\">\r\n        <p>\r\n            But I must explain to you how all this mistaken idea of denouncing pleasure and praising\r\n            pain was born and I will give you a complete account of the system, and expound the\r\n            actual teachings of the great explorer of the truth, the master-builder of human\r\n            happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,\r\n            but because those who do not know how to pursue pleasure rationally encounter\r\n            consequences that are extremely painful.\r\n        </p>\r\n\r\n        <p>\r\n            Nor again is there anyone who loves or pursues or desires to obtain pain of itself,\r\n            because it is pain, but because occasionally circumstances occur in which toil and pain\r\n            can procure him some great pleasure. To take a trivial example, which of us ever\r\n            undertakes laborious physical exercise, except to obtain some advantage from it?</p><p>But who has any right to find fault with a man who chooses to enjoy a pleasure that has\r\n            no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\r\n            On the other hand, we denounce with righteous indignation and dislike men who are so\r\n            beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire,\r\n            that they cannot foresee.Nor again is there anyone who loves or pursues or desires to\r\n            obtain pain of itself, because it is pain, but because occasionally circumstances occur\r\n            in which toil and pain can procure him some great pleasure. To take a trivial example,\r\n            which of us ever undertakes laborious physical exercise, except to obtain some advantage\r\n            from it? Nor again is there anyone who loves or pursues or desires to obtain pain of\r\n            itself, because it is pain, but because occasionally circumstances occur in which toil\r\n            and pain can procure him some great pleasure. To take a trivial example, which of us\r\n            ever\r\n        \r\n\r\n        </p><p>\r\n            But I must explain to you how all this mistaken idea of denouncing pleasure and praising\r\n            pain was born and I will give you a complete account of the system, and expound the\r\n            actual teachings of the great explorer of the truth, the master-builder of human\r\n            happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,\r\n            but because those who do not know how to pursue pleasure rationally encounter\r\n            consequences that are extremely painful.\r\n        </p>\r\n    </div>', 'But I must explain to you how all this mistaken idea of denouncing pleasure', '2020-12-12 07:19:55', '2020-12-12 07:19:55', 0),
-(2, 'Technology market see the new Android tablets', 'technology-market-see-the-new-android-tablets', '\\news\\images\\115fd4d7ff8e61d.jpg', 'Eric joan', 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after.', '<p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI.\r\n                Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate\r\n                    B2C users after installed base benefits. Dramatically visualize customer directed convergence\r\n                    without revolutionary ROI</p><p><iframe src=\"//www.youtube.com/embed/lImFHbmnon4\" class=\"note-video-clip\" width=\"640\" height=\"360\" frameborder=\"0\"></iframe><br></p><p><br></p><p>\r\n                </p>', 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C', '2020-12-12 08:47:27', '2020-12-12 08:47:27', 0),
-(3, 'Govt cannot withdraw or recommend for withdrawal of graft cases, HC rules Sinha discovered Pradeep’s links to drug trade', 'govt-cannot-withdraw-or-recommend-for-withdrawal-of-graft-cases--hc-rules-sinha-discovered-pradeep-s-links-to-drug-trade', '\\news\\images\\115fd61e24c1f00.jpg', 'John DOe', 'The High Court has ruled that the government cannot withdraw any corruption case filed or moved by the Anti-Corruption Commission (ACC) and cannot recommend for withdrawal of such cases from the trial proceedings either.', '<p>The ACC is an independent body under the Anti-Corruption Commission \r\nAct, 2004, and therefore, any case filed and moved following the \r\napproval from the commission (ACC) cannot be withdrawn and \r\nrecommendations for case withdrawal by the government will not be \r\nentertained, the HC observed.</p>\r\n<p>The HC bench of Justice M Enayetur Rahim and Justice Md Mostafizur \r\nRahman came up with the observation while delivering a short verdict on \r\nDecember 10 on a revision petition filed by the ACC involving this \r\nissue.</p>\r\n<p>The government has reportedly recommended for withdrawal of more than\r\n 7,000 criminal cases --including many corruption cases filed during the\r\n regimes of the BNP-led alliance government and the military backed \r\ncaretaker government.</p>\r\n<p>ACC\'s lawyer AKM Fazlul Hoque today told The Daily Star that the HC \r\nbench has come up with the observation endorsing his arguments that the \r\ntrial proceedings of the ACC\'s cases are run by the courts under the \r\nCriminal Law Amendment Act, 1958.</p><div class=\"mobile-adv-in-body pull-left pad-left-right-big gero-left pad-bottom-small\"><div id=\"dfp-ad-news_details_after_2nd_paragraph-wrapper\" class=\"dfp-tag-wrapper\">\r\n<div id=\"dfp-ad-news_details_after_2nd_paragraph\" class=\"dfp-tag-wrapper\" data-google-query-id=\"CJqqwNmOy-0CFREdcgodylIN4g\">\r\n\r\n</div>\r\n</div></div>\r\n<p>Under section 10(4) of this act, the cases of the ACC can be \r\nwithdrawn by the trial courts concerned only following the written \r\napproval from the commission (ACC).</p>\r\n<p>The government cannot interfere in the running of trials of ACC cases, he said.</p>\r\n<p>He said the divisional special judge\'s court in Sunamganj on January \r\n26, 2012 had approved an application from the government to withdraw a \r\ncorruption case filed against Md Abdul Kashem, chairman of Fourth \r\nBorodal Uttar Union under Taherpur upazila in Sunamganj, and two others.</p>\r\n<p>The Sunamganj court also exempted the accused from the case \r\nproceedings. The case was filed with Taherpur Police Station on April 5,\r\n 2007 against the accused, on charges of embezzling 17 bundles of \r\ngovernment relief tin worth Tk 1.36 lakh.</p>\r\n<p>Earlier on February 11, 2011 the home ministry recommended for withdrawal of the case.</p>\r\n<p>The ACC filed the revision petition with the HC on November 19, 2014 challenging the Sunamganj court order.</p>\r\n<p>Following the revision petition, a HC bench led by Justice M Enayetur\r\n Rahim issued a rule asking the state and the accused persons to explain\r\n why the home ministry\'s recommendation for withdrawal of the corruption\r\n case should not be declared illegal.</p>\r\n<p>The bench also ordered the three accused to surrender to the trial \r\ncourt concerned in four weeks in connection with the corruption case. \r\nThe accused surrendered to the lower court concerned in line with the HC\r\n directive.</p>\r\n<p>The accused persons, however, were granted bail in the case.</p>\r\n<p>After holding hearing on the pending rule, the HC on December 10 delivered the short verdict.</p>\r\n<p>The details of the HC observation will be known when the full text of\r\n the HC verdict is released, lawyer Fazlul Hoque said, adding that the \r\ngovernment did not place any argument on the rule.</p>', 'The High Court has ruled that the government', '2020-12-13 07:59:00', '2020-12-13 08:00:20', 0),
-(4, 'Bangladesh an inspiration to South Asian peers', 'bangladesh-an-inspiration-to-south-asian-peers', '\\news\\images\\115fd620fb2e2aa.jpg', 'John Doe', 'Bangladesh’s incredible economic rise over the years has become a source of inspiration for other south Asian nations as the country has already shown its resilience even amid the ongoing Covid-19 pandemic, a time when the global economy is struggling to survive, said Binod Chaudhary, founder of CG Corp Global.', '<p>Bangladesh’s incredible economic rise over the years has become a source\r\n of inspiration for other south Asian nations as the country has already\r\n shown its resilience even amid the ongoing Covid-19 pandemic, a time \r\nwhen the global economy is struggling to survive, said Binod Chaudhary, \r\nfounder of CG Corp Global.Bangladesh’s incredible economic rise over the years has become a source\r\n of inspiration for other south Asian nations as the country has already\r\n shown its resilience even amid the ongoing Covid-19 pandemic, a time \r\nwhen the global economy is struggling to survive, said Binod Chaudhary, \r\nfounder of CG Corp Global.</p>', NULL, '2020-12-13 08:11:07', '2020-12-13 08:11:07', 0),
-(5, 'Airports being used to smuggle out yaba', 'airports-being-used-to-smuggle-out-yaba', '\\news\\images\\115fdc5d2ca4726.jpg', 'John Doe', 'Drug traffickers smuggled four to five stashes of yaba pills in luggages or shipping boxes out of the country through the airports every month in the last two years.', '<p>Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.Drug traffickers smuggled four to five stashes of yaba pills in luggages\r\n or shipping boxes out of the country through the airports every month \r\nin the last two years.</p>', 'Drug traffickers smuggled four to five stashes of yaba pills in luggages', '2020-12-18 01:41:32', '2020-12-18 01:41:32', 0),
-(6, 'Bangladeshis at Big Tech: What’s it like to work at Google?', 'bangladeshis-at-big-tech--what-s-it-like-to-work-at-google-', '\\news\\images\\115fdc5d67a0176.jpg', 'John Doe', 'The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...', '<p>The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...The tech titan Google, providing various kinds of online-based services to the masses for decades, is one of the most well...</p>', 'The tech titan Google, providing various kinds of online-based services to', '2020-12-18 01:42:31', '2020-12-18 01:42:31', 0),
-(7, 'DU Film Society’s ‘Smritir Bijoy’ shines a light on the true spirit of the Liberation War', 'du-film-society-s--smritir-bijoy--shines-a-light-on-the-true-spirit-of-the-liberation-war', '\\news\\images\\115fdc5d9e131a4.jpg', 'John Doe', 'On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...', '<p>On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh, Dhaka University Film Society (DUFS)...</p>', 'On the occasion of the Martyred Intellectuals Day and the Victory Day of Bangladesh,', '2020-12-18 01:43:26', '2020-12-18 01:43:26', 0),
-(8, 'India hit back after folding against Australia', 'india-hit-back-after-folding-against-australia', '\\news\\images\\115fdc5dcee9536.jpg', 'John Doe', 'India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...', '<p>India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...India snared both of Australia\'s openers after falling cheaply in their first innings as six wickets tumbled in day...</p>', NULL, '2020-12-18 01:44:14', '2020-12-18 01:44:14', 0),
-(9, 'Column by Mahfuz Anam: ‘Democracy Day’ came and went, nobody noticed', 'column-by-mahfuz-anam---democracy-day--came-and-went--nobody-noticed', '\\news\\images\\115fdc5e0dd4b53.jpg', 'John Doe', 'What was once a startling thunderclap passed off as a whimper, what was welcomed by millions and celebrated as the rebirth...', '<p>What was once a startling thunderclap passed off as a whimper, what was welcomed by millions and celebrated as the rebirth...What was once a startling thunderclap passed off as a whimper, what was welcomed by millions and celebrated as the rebirth...What was once a startling thunderclap passed off as a whimper, what was welcomed by millions and celebrated as the rebirth...What was once a startling thunderclap passed off as a whimper, what was welcomed by millions and celebrated as the rebirth...</p>', 'What was once a startling thunderclap passed off', '2020-12-18 01:45:17', '2020-12-18 01:45:17', 0),
-(10, 'Wearing someone else’s face: Hyper-realistic masks to go on sale in Japan', 'wearing-someone-else-s-face--hyper-realistic-masks-to-go-on-sale-in-japan', '\\news\\images\\115fdc5e3669d35.jpg', 'Mask', 'A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...', '<p>A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...A year into the coronavirus epidemic, a Japanese retailer has come up with a new take on the theme of facial camouflage -...</p>', NULL, '2020-12-18 01:45:58', '2020-12-18 01:45:58', 0),
-(11, 'Stimulus eludes 42pc apparel workers', 'stimulus-eludes-42pc-apparel-workers', '\\news\\images\\115fdc5e76ce234.jpg', 'John Doe', 'More than 42 per cent garment workers did not benefit from the stimulus package despite being one of the poorest segments of the population and hardest hit by the coronavirus pandemic, according to a new survey.', '<p>More than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\nMore than 42 per cent garment workers did not benefit from the stimulus \r\npackage despite being one of the poorest segments of the population and \r\nhardest hit by the coronavirus pandemic, according to a new survey.\r\n</p>', NULL, '2020-12-18 01:47:02', '2020-12-18 01:47:02', 0),
-(12, 'India pledges vaccine support hi', 'india-pledges-vaccine-support-hi', '\\news\\images\\115fdc5ed446370.jpg', 'John Doe', 'India promised to promptly and effectively deliver to Bangladesh...', '<p>India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...India promised to promptly and effectively deliver to Bangladesh...</p>', 'India promised to promptly and effectively deliver to Bangladesh', '2020-12-18 01:48:36', '2021-01-05 08:27:52', 0);
+INSERT INTO `news` (`id`, `title`, `slug`, `image`, `author`, `short_description`, `body`, `quote`, `views_count`, `created_at`, `updated_at`) VALUES
+(1, 'The age bar complication in secondary admissions', 'the-age-bar-complication-in-secondary-admissions', '\\news\\images\\115ff9ebc4a27dd.jpg', 'John Doe', 'Ultimately, the High Court stayed the order of the concerned authorities after a parent filed a writ petition, ordering that students below the age of 11 c', '<p>Eventually, the matter seems to have been settled with the \r\nintervention of the High Court. The country\'s education system, already \r\nhit hard by the coronavirus crisis, has recently been plagued by \r\ncomplications regarding the date of birth of students applying for \r\nadmission at the secondary level. Considering the risk of infection, the\r\n authorities decided to do away with admission tests for government \r\nprimary and secondary school students, and instead make selections \r\nthrough lottery after receiving applications online. The deadline to \r\napply for admission to secondary schools was December 15 to 27. As \r\nparents went to apply for their children, along with the often \r\nencountered slowness of the Internet and server issues, they had to \r\ncontend with another problem—in many cases, applications for sixth grade\r\n admissions could not be processed because the date of birth specified \r\nin their birth certificates did not comply with the minimum age limit \r\n(at least 11 years) set by the authorities. As a result, many failed to \r\nsubmit applications within the stipulated deadline. There has been a lot\r\n of noise in the country about this.</p>\r\n<p>Ultimately, the High Court stayed the order of the concerned \r\nauthorities after a parent filed a writ petition, ordering that students\r\n below the age of 11 can also apply for admission in the sixth grade in \r\ngovernment high schools. At the same time, considering the internet and \r\nserver problems, it directed the concerned authorities to extend the \r\ndeadline for submitting online applications by seven working days.</p>\r\n<p>At any stage in this country—be it school, college or university—the \r\nadmission process is like going into battle. In the case of children and\r\n adolescents, parents become the main participants in this war and go to\r\n great lengths to enrol their children into prestigious schools. The \r\nhuge crowds, the noise and the decorations during the admission season \r\nare really worth seeing. Many parents even hire one or more tutors or \r\nenrol their wards into a coaching centre to prepare them for admission \r\ntests. On the other hand, the school authorities not only have to \r\norganise this huge workload of student admissions, but also often have \r\nto accept the pressures of the requests of various influential quarters \r\nfor the admission of students beyond the rules.</p>\r\n<p>Apparently, one of the reasons for the parents\' desperate attempts to\r\n enrol their children into a handful of reputed schools is the huge \r\ndifference in quality between these schools and others. However, many \r\nwill question what exactly is meant by quality here. Of course, at the \r\nend of the year, when the results of various centrally conducted \r\nexaminations come out, there are big celebrations for the success of \r\nstudents from these schools. However, the question remains, is this \r\nbecause of the high quality of teachers, teaching materials and teaching\r\n methods? Or is it because the most studious and brightest children go \r\nto these schools because of the reputation they enjoy? Maybe both \r\nfactors have their roles here.</p>', NULL, 0, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(2, 'A big fish going after a small fry: Khokon calls out Taposh on corruption', 'a-big-fish-going-after-a-small-fry--khokon-calls-out-taposh-on-corruption', '\\news\\images\\115ff9eeb060e96.jpg', 'John Doe', 'Bringing allegations of corruption against Dhaka South City Corporation (DSCC) Mayor Sheikh Fazle Noor Taposh, former mayor Sayeed Khokon today said Taposh has lost eligibility for the post.', '<p><strong><span style=\"font-size: 13.008px;\">Bringing allegations of \r\ncorruption against Dhaka South City Corporation (DSCC) Mayor Sheikh \r\nFazle Noor Taposh, former mayor Sayeed Khokon today said Taposh has lost\r\n eligibility for the post.</span></strong></p>\r\n<p>The former DSCC mayor made the allegations at a human chain, held in front of the Supreme Court in Dhaka this afternoon.&nbsp;</p>\r\n<p>Reading out a written statement, Khokon said, \"Taposh has been very \r\nvocal against corruption since he took charge as the mayor. I would tell\r\n him, a big fish lecturing small fry on corruption is ironic.\"</p>\r\n<p>\"If you want to develop a corruption-free administration, first of \r\nall, make sure you\'re free of corruption. Then look at the small fry,\" \r\nKhokon said, referring to Taposh.</p>\r\n<p>Khokon alleged that Taposh has transferred hundreds of crores of taka\r\n to Madhumati Bank (owned by Taposh) from DSCC. \"By investing the money,\r\n he is making profits worth crores of taka,\" Khokon claimed.</p><div class=\"mobile-adv-in-body pull-left pad-left-right-big gero-left pad-bottom-small\"><div id=\"dfp-ad-news_details_after_2nd_paragraph-wrapper\" class=\"dfp-tag-wrapper\">\r\n<div id=\"dfp-ad-news_details_after_2nd_paragraph\" class=\"dfp-tag-wrapper\" data-google-query-id=\"CPDEnLK2j-4CFZQecgoduBsGuw\">\r\n\r\n</div>\r\n</div></div>\r\n<p>\"On the other hand, the poor employees of the city corporation are \r\nnot getting their salaries for months, and various development projects \r\nhave been stalled due to lack of funds,\" Khokon said.</p>\r\n<p>Through such activities, the mayor has lost his eligibility to hold \r\nthe post as per Article 9 (2) (Ja) of the second chapter of the City \r\nCorporation Act 2009, Khokon said.</p>\r\n<p>He further said, \"The eviction drive carried out by the city corporation in Fulbaria Market is completely illegal.\"</p>', NULL, 0, '2021-01-09 11:58:08', '2021-01-09 11:58:08');
 
 -- --------------------------------------------------------
 
@@ -405,10 +371,10 @@ CREATE TABLE `news_categories` (
 --
 
 INSERT INTO `news_categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Mobile', 'mobile', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(2, 'Tablet', 'tablet', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(3, 'Hot News', 'hot-news', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(4, 'Top Viewed', 'top-viewed', '2020-12-11 05:33:28', '2020-12-11 05:33:28');
+(1, 'Mobile', 'mobile', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(2, 'Tablet', 'tablet', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(3, 'Hot News', 'hot-news', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(4, 'Top Viewd', 'top-viewed', '2021-01-09 11:42:59', '2021-01-09 11:47:39');
 
 -- --------------------------------------------------------
 
@@ -428,54 +394,14 @@ CREATE TABLE `news_news_category` (
 --
 
 INSERT INTO `news_news_category` (`news_id`, `news_category_id`, `created_at`, `updated_at`) VALUES
-(1, 3, NULL, NULL),
-(1, 4, NULL, NULL),
-(2, 1, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(2, 2, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(2, 4, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(1, 1, '2020-12-13 07:35:12', '2020-12-13 07:35:12'),
-(1, 2, '2020-12-13 07:35:12', '2020-12-13 07:35:12'),
-(2, 3, '2020-12-13 07:35:33', '2020-12-13 07:35:33'),
-(3, 1, '2020-12-13 07:59:00', '2020-12-13 07:59:00'),
-(3, 2, '2020-12-13 07:59:00', '2020-12-13 07:59:00'),
-(3, 3, '2020-12-13 07:59:00', '2020-12-13 07:59:00'),
-(3, 4, '2020-12-13 07:59:00', '2020-12-13 07:59:00'),
-(4, 1, '2020-12-13 08:11:07', '2020-12-13 08:11:07'),
-(4, 2, '2020-12-13 08:11:07', '2020-12-13 08:11:07'),
-(4, 3, '2020-12-13 08:11:07', '2020-12-13 08:11:07'),
-(4, 4, '2020-12-13 08:11:07', '2020-12-13 08:11:07'),
-(5, 1, '2020-12-18 01:41:32', '2020-12-18 01:41:32'),
-(5, 2, '2020-12-18 01:41:32', '2020-12-18 01:41:32'),
-(5, 3, '2020-12-18 01:41:32', '2020-12-18 01:41:32'),
-(5, 4, '2020-12-18 01:41:32', '2020-12-18 01:41:32'),
-(6, 1, '2020-12-18 01:42:31', '2020-12-18 01:42:31'),
-(6, 2, '2020-12-18 01:42:31', '2020-12-18 01:42:31'),
-(6, 3, '2020-12-18 01:42:31', '2020-12-18 01:42:31'),
-(6, 4, '2020-12-18 01:42:31', '2020-12-18 01:42:31'),
-(7, 1, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(7, 2, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(7, 3, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(7, 4, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(8, 1, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(8, 2, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(8, 3, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(8, 4, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(9, 1, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(9, 2, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(9, 3, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(9, 4, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(10, 1, '2020-12-18 01:45:58', '2020-12-18 01:45:58'),
-(10, 2, '2020-12-18 01:45:58', '2020-12-18 01:45:58'),
-(10, 3, '2020-12-18 01:45:58', '2020-12-18 01:45:58'),
-(10, 4, '2020-12-18 01:45:58', '2020-12-18 01:45:58'),
-(11, 1, '2020-12-18 01:47:02', '2020-12-18 01:47:02'),
-(11, 2, '2020-12-18 01:47:02', '2020-12-18 01:47:02'),
-(11, 3, '2020-12-18 01:47:02', '2020-12-18 01:47:02'),
-(11, 4, '2020-12-18 01:47:02', '2020-12-18 01:47:02'),
-(12, 1, '2020-12-18 01:48:36', '2020-12-18 01:48:36'),
-(12, 2, '2020-12-18 01:48:36', '2020-12-18 01:48:36'),
-(12, 3, '2020-12-18 01:48:36', '2020-12-18 01:48:36'),
-(12, 4, '2020-12-18 01:48:36', '2020-12-18 01:48:36');
+(1, 1, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(1, 2, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(1, 3, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(1, 4, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(2, 1, '2021-01-09 11:58:08', '2021-01-09 11:58:08'),
+(2, 2, '2021-01-09 11:58:08', '2021-01-09 11:58:08'),
+(2, 3, '2021-01-09 11:58:08', '2021-01-09 11:58:08'),
+(2, 4, '2021-01-09 11:58:08', '2021-01-09 11:58:08');
 
 -- --------------------------------------------------------
 
@@ -495,26 +421,9 @@ CREATE TABLE `news_tag` (
 --
 
 INSERT INTO `news_tag` (`news_id`, `tag_id`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, NULL),
-(1, 2, NULL, NULL),
-(1, 3, NULL, NULL),
-(1, 4, NULL, NULL),
-(2, 1, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(2, 2, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(2, 3, '2020-12-12 08:47:27', '2020-12-12 08:47:27'),
-(3, 2, '2020-12-13 07:59:00', '2020-12-13 07:59:00'),
-(4, 1, '2020-12-13 08:11:07', '2020-12-13 08:11:07'),
-(5, 1, '2020-12-18 01:41:32', '2020-12-18 01:41:32'),
-(6, 1, '2020-12-18 01:42:31', '2020-12-18 01:42:31'),
-(7, 1, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(7, 3, '2020-12-18 01:43:26', '2020-12-18 01:43:26'),
-(8, 4, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(8, 2, '2020-12-18 01:44:14', '2020-12-18 01:44:14'),
-(9, 2, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(9, 3, '2020-12-18 01:45:17', '2020-12-18 01:45:17'),
-(10, 3, '2020-12-18 01:45:58', '2020-12-18 01:45:58'),
-(11, 2, '2020-12-18 01:47:02', '2020-12-18 01:47:02'),
-(12, 2, '2020-12-18 01:48:36', '2020-12-18 01:48:36');
+(1, 1, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(1, 2, '2021-01-09 11:45:40', '2021-01-09 11:45:40'),
+(2, 1, '2021-01-09 11:58:08', '2021-01-09 11:58:08');
 
 -- --------------------------------------------------------
 
@@ -637,20 +546,20 @@ CREATE TABLE `settings` (
 
 CREATE TABLE `social_media` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `social_media`
 --
 
-INSERT INTO `social_media` (`id`, `icon`, `link`, `created_at`, `updated_at`, `name`) VALUES
-(6, '<i class=\"fab fa-facebook-f\"></i>', 'www.facebook.com', NULL, '2020-12-11 05:53:30', 'Facebook'),
-(7, '<i class=\"fab fa-twitter\"></i>', 'www.twittter.com', NULL, '2020-12-11 05:26:30', 'Twitter');
+INSERT INTO `social_media` (`id`, `name`, `icon`, `link`, `created_at`, `updated_at`) VALUES
+(1, 'Facebook', '<i class=\"fab fa-facebook-f\"></i>', 'www.facebook.com', NULL, NULL),
+(2, 'Twitter', '<i class=\"fab fa-twitter\"></i>', 'www.twittter.com', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -670,10 +579,10 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Tech', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(2, 'Transport', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(3, 'Mobile', '2020-12-10 01:49:14', '2020-12-10 01:49:14'),
-(4, 'Gadgets', '2020-12-10 01:49:14', '2020-12-10 01:49:14');
+(1, 'Tech', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(2, 'Transport', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(3, 'Mobile', '2021-01-09 11:42:59', '2021-01-09 11:42:59'),
+(4, 'Gadgets', '2021-01-09 11:42:59', '2021-01-09 11:42:59');
 
 -- --------------------------------------------------------
 
@@ -701,6 +610,8 @@ CREATE TABLE `translations` (
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -708,17 +619,15 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `settings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `first_name`, `last_name`) VALUES
-(5, NULL, 'admin@example.com', 'users/default.png', NULL, '$2y$10$sY4n.6FxkcXWlcFyMlucZuWLu23FXVOFMPgm7bZfLdANysOHTa.AC', NULL, NULL, '2021-01-08 11:53:00', '2021-01-08 11:53:00', 'Bappi', 'Saha');
+INSERT INTO `users` (`id`, `role_id`, `first_name`, `last_name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Kibrea', 'Akash', 'admin@example.com', 'users/default.png', NULL, '$2y$10$Rum54I88y1MH9pU9xonoAO1DJVor9bZbI06VGVEd8UXgipnaw06T.', 'UkrA5Gez5JLLUtocqqbTBmH2sPLaNOZ95ztQNQ7xZGumAlRJxty3R3CFXApr', NULL, '2021-01-09 11:42:59', '2021-01-09 11:42:59');
 
 -- --------------------------------------------------------
 
@@ -785,9 +694,9 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `members`
+-- Indexes for table `likes`
 --
-ALTER TABLE `members`
+ALTER TABLE `likes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -928,7 +837,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -946,7 +855,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `content_layouts`
 --
 ALTER TABLE `content_layouts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `data_rows`
@@ -967,10 +876,10 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `members`
+-- AUTO_INCREMENT for table `likes`
 --
-ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `likes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -994,19 +903,19 @@ ALTER TABLE `metas`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `nav_menus`
 --
 ALTER TABLE `nav_menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `news_categories`
@@ -1048,7 +957,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `social_media`
 --
 ALTER TABLE `social_media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -1066,7 +975,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
